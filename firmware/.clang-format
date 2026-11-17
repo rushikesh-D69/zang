@@ -1,0 +1,12 @@
+# Zang firmware style (applies to our components only; managed_components are untouched).
+BasedOnStyle: LLVM
+IndentWidth: 4
+ColumnLimit: 110
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: WithoutElse
+AlignConsecutiveMacros: Consecutive
+AlignTrailingComments: true
+BreakBeforeBraces: Linux
+PointerAlignment: Right
+SortIncludes: false
+IncludeBlocks: Preserve

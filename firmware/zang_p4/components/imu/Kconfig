@@ -1,0 +1,16 @@
+menu "Zang IMU (optional)"
+    config ZANG_IMU_ENABLE
+        bool "QMI8658 IMU on the shared I2C bus"
+        default n
+        help
+            Board v0.0.1 has NO IMU (HARDWARE_REVIEW.md finding 5). STATE then reports rpy/gyro/acc = 0x7FFF.
+            A learned balance policy needs one: add a QMI8658C on I2C (GPIO17/18) on v0.0.2.
+    config ZANG_IMU_I2C_ADDR
+        hex "I2C address (0x6B with SA0 high, 0x6A low)"
+        depends on ZANG_IMU_ENABLE
+        default 0x6B
+    config ZANG_IMU_RATE_HZ
+        int "Sampling / filter rate (Hz)"
+        depends on ZANG_IMU_ENABLE
+        default 200
+endmenu

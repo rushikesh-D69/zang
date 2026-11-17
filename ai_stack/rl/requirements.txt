@@ -1,0 +1,10 @@
+# Installed into ai_stack/rl/.venv ON TOP of /home/rushikesh/ZingAIStack/.venv-playground (mujoco 4.0.1, playground
+# 1.0.1, torch 2.13, warp), which the venv sees through a .pth file (see Makefile `setup`).
+# rsl-rl-lib and stable-baselines3 are installed with --no-deps: its torchvision requirement otherwise drags in a second 3 GB CUDA-13 torch.
+tensordict>=0.7
+onnx
+onnxscript>=0.5.4
+onnxruntime
+tensorboard
+GitPython
+pandas

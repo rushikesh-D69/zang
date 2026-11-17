@@ -1,0 +1,22 @@
+menu "Zang audio"
+    comment "v0.0.1: NS4168 class-D amp on I2S (no codec, no MCLK) + two PDM mics (stereo L/R) on PDM RX."
+    config ZANG_AUDIO_OUT_I2S_PORT
+        int "I2S controller for the speaker"
+        range 0 2
+        default 1
+    config ZANG_AUDIO_OUT_RATE
+        int "Default speaker sample rate (Hz); streams and WAV files switch it"
+        default 16000
+    config ZANG_AUDIO_OUT_BUF_MS
+        int "Speaker ring buffer (ms)"
+        default 1000
+    config ZANG_AUDIO_MIC_RATE
+        int "Microphone sample rate (Hz, PDM2PCM)"
+        default 16000
+    config ZANG_AUDIO_MIC_FRAME_MS
+        int "Microphone callback frame (ms)"
+        default 20
+    config ZANG_AUDIO_MIC_STEREO
+        bool "Deliver both mics (stereo) instead of the L+R mono mix"
+        default n
+endmenu

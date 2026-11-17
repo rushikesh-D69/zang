@@ -1,0 +1,37 @@
+{
+  "_doc": "CANONICAL joint table for Zang. Shared contract between ai_stack (sim, planner, safety, RL) and firmware (generated into firmware/zang_p4/components/robot_def/include/robot_joints.h by firmware/tools/gen_robot_joints.py; never edit that header by hand). Angles on the wire and everywhere in software are MODEL joint angles (MJCF/URDF frame, radians in code, centidegrees int16 on the wire). The firmware alone maps model angle -> servo ticks with its per-servo calibration (sign, zero offset, ticks per turn) stored in NVS. 'index' = wire order (ZLink JOINT arrays). servo_id = bus ID, PROVISIONAL until the harness is wired. Limits marked placeholder come from zang_description/tools/build.py (+-90 deg) and must be replaced by measured mechanical stops.",
+  "name": "zang",
+  "mjcf": "../zang_description/mjcf/scene.xml",
+  "urdf": "../zang_description/zang.urdf",
+  "n_joints": 15,
+  "servo": {
+    "model": "DS-R003G",
+    "_doc": "Serial bus servo, same DS protocol family as Zing (FF FF id len instr addr data chk). Resolution / range / max baud are NOT yet confirmed from a datasheet: placeholders below follow Zing's measured DS servos (270 deg over 4096 ticks).",
+    "ticks_per_rev_placeholder": 4096,
+    "range_deg_placeholder": 270,
+    "bus_baud_default": 115200
+  },
+  "joints": [
+    {"index": 0,  "name": "waist_yaw",            "servo_id": 1,  "group": "waist", "side": null,    "lower": -1.5708, "upper": 1.5708, "home": 0.0},
+    {"index": 1,  "name": "left_hip_roll",        "servo_id": 2,  "group": "leg",   "side": "left",  "lower": -1.5708, "upper": 1.5708, "home": 0.0},
+    {"index": 2,  "name": "left_hip_pitch",       "servo_id": 3,  "group": "leg",   "side": "left",  "lower": -1.5708, "upper": 1.5708, "home": -0.5},
+    {"index": 3,  "name": "left_knee_pitch",      "servo_id": 4,  "group": "leg",   "side": "left",  "lower": -1.5708, "upper": 1.5708, "home": -0.5},
+    {"index": 4,  "name": "left_ankle_roll",      "servo_id": 5,  "group": "leg",   "side": "left",  "lower": -1.5708, "upper": 1.5708, "home": 0.0},
+    {"index": 5,  "name": "right_hip_roll",       "servo_id": 6,  "group": "leg",   "side": "right", "lower": -1.5708, "upper": 1.5708, "home": 0.0},
+    {"index": 6,  "name": "right_hip_pitch",      "servo_id": 7,  "group": "leg",   "side": "right", "lower": -1.5708, "upper": 1.5708, "home": -0.5},
+    {"index": 7,  "name": "right_knee_pitch",     "servo_id": 8,  "group": "leg",   "side": "right", "lower": -1.5708, "upper": 1.5708, "home": -0.5},
+    {"index": 8,  "name": "right_ankle_roll",     "servo_id": 9,  "group": "leg",   "side": "right", "lower": -1.5708, "upper": 1.5708, "home": 0.0},
+    {"index": 9,  "name": "left_shoulder_pitch",  "servo_id": 10, "group": "arm",   "side": "left",  "lower": -1.5708, "upper": 1.5708, "home": 0.0},
+    {"index": 10, "name": "left_shoulder_roll",   "servo_id": 11, "group": "arm",   "side": "left",  "lower": -1.5708, "upper": 1.5708, "home": 0.0},
+    {"index": 11, "name": "left_elbow",           "servo_id": 12, "group": "arm",   "side": "left",  "lower": -1.5708, "upper": 1.5708, "home": 0.0},
+    {"index": 12, "name": "right_shoulder_pitch", "servo_id": 13, "group": "arm",   "side": "right", "lower": -1.5708, "upper": 1.5708, "home": 0.0},
+    {"index": 13, "name": "right_shoulder_roll",  "servo_id": 14, "group": "arm",   "side": "right", "lower": -1.5708, "upper": 1.5708, "home": 0.0},
+    {"index": 14, "name": "right_elbow",          "servo_id": 15, "group": "arm",   "side": "right", "lower": -1.5708, "upper": 1.5708, "home": 0.0}
+  ],
+  "limits_doc": "Per-group motion limits used by the safety stage (and mirrored by the firmware's last-line limiter). vmax rad/s, amax rad/s^2. Placeholders until the servo is identified.",
+  "group_limits": {
+    "arm":   {"vmax": 4.0, "amax": 40.0},
+    "waist": {"vmax": 2.0, "amax": 20.0},
+    "leg":   {"vmax": 1.5, "amax": 15.0}
+  }
+}

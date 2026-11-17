@@ -1,0 +1,32 @@
+menu "Zang storage (SD card)"
+    choice ZANG_SD_MODE
+        prompt "SD card interface"
+        default ZANG_SD_SDMMC_4BIT
+        config ZANG_SD_SDMMC_4BIT
+            bool "SDMMC 4-bit"
+        config ZANG_SD_SDMMC_1BIT
+            bool "SDMMC 1-bit"
+        config ZANG_SD_SPI
+            bool "SPI"
+    endchoice
+    config ZANG_SD_SDMMC_SLOT
+        int "SDMMC slot (0 = IOMUX pins 39-44 fixed, 1 = any GPIO via matrix)"
+        depends on !ZANG_SD_SPI
+        range 0 1
+        default 1
+    config ZANG_SD_LDO_CHAN
+        int "On-chip LDO channel powering the SD IO domain (-1 = external supply; P4 EV board uses 4)"
+        range -1 4
+        default -1
+    config ZANG_SD_SPI_HOST
+        int "SPI host for SD (SPI mode)"
+        depends on ZANG_SD_SPI
+        range 1 2
+        default 2
+    config ZANG_SD_MAX_FILES
+        int "Max open files"
+        default 8
+    config ZANG_SD_FREQ_KHZ
+        int "Bus frequency (kHz)"
+        default 20000
+endmenu

@@ -1,0 +1,25 @@
+# Pinned for the Colab GPU notebook (train_colab_gpu.ipynb), Python >= 3.12, CUDA 12 (a T4 runtime).
+# These are exactly the versions the code in zang_rl/ (mjx_env.py, brax_train.py) and export_policy.py was checked
+# against in ai_stack/rl/.venv. They replace whatever jax/flax Colab ships.
+#
+# JAX with the CUDA 12 plugin and its own CUDA libraries (does not need Colab's system CUDA).
+jax[cuda12]==0.12.0.1
+jaxlib==0.12.0.1
+# MuJoCo, MJX (the GPU physics) and brax (PPO).
+mujoco==4.0.1
+mujoco-mjx==4.0.1
+brax==0.14.2
+flax==0.12.12
+optax==0.2.9
+orbax-checkpoint==0.12.11
+# Gymnasium env: only used by the parity cell (same observation / action layout as the CPU env).
+gymnasium==1.4.0
+# Policy export (ONNX + C header check) and sim2sim evaluation. torch is deliberately NOT pinned: the Colab
+# image already ships it and export_policy.py only needs torch.nn / torch.onnx.
+onnx==1.23.2
+onnxscript==0.7.2
+onnxruntime==1.32.0
+# Already on Colab; the floor is what jax 0.12 needs.
+numpy>=2.2
+scipy>=1.15
+matplotlib

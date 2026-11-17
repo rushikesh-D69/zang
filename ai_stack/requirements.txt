@@ -1,0 +1,17 @@
+# Core: model, safety stage, physics twin, ZLink, studio server
+mujoco==4.0.1
+numpy
+scipy
+websockets          # tools/screenshot.py (DevTools protocol)
+pytest
+# Speech: offline TTS, alignment, gesture tagger (CPU)
+piper-tts
+onnx                # Piper phoneme alignments -> exact word / stress times
+onnxruntime
+faster-whisper
+transformers
+soundfile
+lameenc             # MP3 export for the SD card
+pyserial
+# torch (CPU wheel) is installed by `make setup` from https://download.pytorch.org/whl/cpu
+pillow              # image upload -> 240x240 JPEG for the chest TFT; emulator camera frames

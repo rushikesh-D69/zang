@@ -1,0 +1,11 @@
+{
+  "_doc": "DS-R003G servo model for RL / sim2sim. ALL VALUES ARE PLACEHOLDERS copied from zang_description/tools/build.py (KP 8, EFFORT 2, VELOCITY 6, damping 0.05, armature 0.005, frictionloss 0.01). Replace them with an identification on the real servo (BAM-style pendulum bench or mujoco.sysid on logged step responses, see ai_stack/rl/README.md 'Closing the gap'), then set identified=true. The env uses kp, damping, armature, frictionloss and force_limit on every position actuator / servo joint, caps target slew at vmax, and interpolates each command over the control period like the DS move command (interp=ramp).",
+  "kp": 8.0,
+  "damping": 0.05,
+  "armature": 0.005,
+  "frictionloss": 0.01,
+  "force_limit": 2.0,
+  "vmax": 6.0,
+  "interp": "ramp",
+  "identified": false
+}

@@ -1,0 +1,16 @@
+menu "Zang app"
+    config ZANG_STATE_HZ
+        int "Default STATE publish rate (Hz); host can change it with CMD SET_RATE"
+        range 1 100
+        default 50
+    config ZANG_STREAM_MIC
+        bool "Stream the microphones to the host (MIC_CHUNK, 16 kHz PCM16 mono = 32 kB/s)"
+        default n
+    config ZANG_IMAGE_MAX_KB
+        int "Largest DISPLAY_IMAGE accepted (KiB of JPEG or raw RGB565 data)"
+        range 128 4096
+        default 512
+    config ZANG_FW_VERSION
+        hex "Firmware version reported in HELLO_ACK (0xMMmm)"
+        default 0x0001
+endmenu

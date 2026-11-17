@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+<robot name="zang">
+  <link name="right_hip">
+    <inertial><origin xyz="0.0241992 -0.0101189 -0.00230399" rpy="0 0 0"/><mass value="0.0753392"/><inertia ixx="2.41779e-05" ixy="1.14973e-08" ixz="-1.18163e-06" iyy="1.90551e-05" iyz="6.81973e-07" izz="2.54809e-05"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/right_hip_0.stl"/></geometry><material name="right_hip_right_hip_0"><color rgba="0.85 0.85 0.85 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/right_hip_1.stl"/></geometry><material name="right_hip_right_hip_1"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/right_hip_2.stl"/></geometry><material name="right_hip_right_hip_2"><color rgba="0.01 0.01 0.01 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/right_hip_3.stl"/></geometry><material name="right_hip_right_hip_3"><color rgba="0.913 0.913 0.922 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/right_hip_0.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/right_hip_1.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/right_hip_2.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/right_hip_3.stl"/></geometry></collision>
+  </link>
+  <link name="pelvis">
+    <inertial><origin xyz="-0.00928268 -3.88369e-07 -0.00454699" rpy="0 0 0"/><mass value="0.0900889"/><inertia ixx="4.32497e-05" ixy="8.01818e-11" ixz="-5.78561e-07" iyy="4.13266e-05" iyz="-4.2782e-10" izz="5.2242e-05"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/pelvis_0.stl"/></geometry><material name="pelvis_pelvis_0"><color rgba="0.85 0.85 0.85 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/pelvis_1.stl"/></geometry><material name="pelvis_pelvis_1"><color rgba="0.01 0.01 0.01 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/pelvis_2.stl"/></geometry><material name="pelvis_pelvis_2"><color rgba="0.913 0.913 0.922 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/pelvis_3.stl"/></geometry><material name="pelvis_pelvis_3"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/pelvis_0.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/pelvis_1.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/pelvis_2.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/pelvis_3.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/pelvis_4.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/pelvis_5.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/pelvis_6.stl"/></geometry></collision>
+  </link>
+  <link name="left_hip">
+    <inertial><origin xyz="0.0241992 0.0101311 -0.00230306" rpy="0 0 0"/><mass value="0.0753392"/><inertia ixx="2.41783e-05" ixy="-1.15145e-08" ixz="-1.18075e-06" iyy="1.90554e-05" iyz="-6.81596e-07" izz="2.54809e-05"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/left_hip_0.stl"/></geometry><material name="left_hip_left_hip_0"><color rgba="0.85 0.85 0.85 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/left_hip_1.stl"/></geometry><material name="left_hip_left_hip_1"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/left_hip_2.stl"/></geometry><material name="left_hip_left_hip_2"><color rgba="0.01 0.01 0.01 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/left_hip_3.stl"/></geometry><material name="left_hip_left_hip_3"><color rgba="0.913 0.913 0.922 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/left_hip_0.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/left_hip_1.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/left_hip_2.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/left_hip_3.stl"/></geometry></collision>
+  </link>
+  <link name="left_thigh_shell">
+    <inertial><origin xyz="0.0050723 4.85723e-17 -0.0300281" rpy="0 0 0"/><mass value="0.00537234"/><inertia ixx="3.31411e-06" ixy="1.03917e-20" ixz="7.6819e-09" iyy="1.3252e-06" iyz="4.40967e-21" izz="2.21806e-06"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/left_thigh_shell_0.stl"/></geometry><material name="left_thigh_shell_left_thigh_shell_0"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/left_thigh_shell_0.stl"/></geometry></collision>
+  </link>
+  <link name="right_thigh_shell">
+    <inertial><origin xyz="0.00486217 1.38778e-17 -0.0300625" rpy="0 0 0"/><mass value="0.00537234"/><inertia ixx="3.31417e-06" ixy="-9.83162e-21" ixz="-7.18497e-21" iyy="1.3252e-06" iyz="7.25777e-22" izz="2.21801e-06"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/right_thigh_shell_0.stl"/></geometry><material name="right_thigh_shell_right_thigh_shell_0"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/right_thigh_shell_0.stl"/></geometry></collision>
+  </link>
+  <link name="left_knee">
+    <inertial><origin xyz="0.0175654 -1.249e-16 -0.0105721" rpy="0 0 0"/><mass value="0.00766893"/><inertia ixx="4.65064e-06" ixy="-3.42037e-20" ixz="4.0426e-09" iyy="2.51688e-06" iyz="1.6961e-21" izz="3.39203e-06"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/left_knee_0.stl"/></geometry><material name="left_knee_left_knee_0"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/left_knee_0.stl"/></geometry></collision>
+  </link>
+  <link name="right_knee">
+    <inertial><origin xyz="0.0173886 -1.45717e-16 -0.0105997" rpy="0 0 0"/><mass value="0.00766893"/><inertia ixx="4.65066e-06" ixy="-3.6802e-20" ixz="-8.54362e-21" iyy="2.51688e-06" iyz="-1.68882e-21" izz="3.39202e-06"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/right_knee_0.stl"/></geometry><material name="right_knee_right_knee_0"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/right_knee_0.stl"/></geometry></collision>
+  </link>
+  <link name="right_thigh">
+    <inertial><origin xyz="5.12936e-07 -0.024671 -0.0124462" rpy="0 0 0"/><mass value="0.0682108"/><inertia ixx="2.41702e-05" ixy="-4.47722e-10" ixz="-2.695e-10" iyy="1.49411e-05" iyz="1.26588e-07" izz="1.36379e-05"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/right_thigh_0.stl"/></geometry><material name="right_thigh_right_thigh_0"><color rgba="0.85 0.85 0.85 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/right_thigh_1.stl"/></geometry><material name="right_thigh_right_thigh_1"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/right_thigh_0.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/right_thigh_1.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/right_thigh_2.stl"/></geometry></collision>
+  </link>
+  <link name="left_thigh">
+    <inertial><origin xyz="4.05447e-05 0.024671 -0.012445" rpy="0 0 0"/><mass value="0.0682108"/><inertia ixx="2.41701e-05" ixy="-4.11331e-11" ixz="3.40979e-08" iyy="1.49411e-05" iyz="-1.26588e-07" izz="1.3638e-05"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/left_thigh_0.stl"/></geometry><material name="left_thigh_left_thigh_0"><color rgba="0.85 0.85 0.85 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/left_thigh_1.stl"/></geometry><material name="left_thigh_left_thigh_1"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/left_thigh_0.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/left_thigh_1.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/left_thigh_2.stl"/></geometry></collision>
+  </link>
+  <link name="left_shin">
+    <inertial><origin xyz="0.000154668 -0.000281057 -0.0479947" rpy="0 0 0"/><mass value="0.0682108"/><inertia ixx="2.40346e-05" ixy="2.62966e-10" ixz="3.40979e-08" iyy="1.49411e-05" iyz="5.80453e-08" izz="1.35026e-05"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/left_shin_0.stl"/></geometry><material name="left_shin_left_shin_0"><color rgba="0.85 0.85 0.85 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/left_shin_1.stl"/></geometry><material name="left_shin_left_shin_1"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/left_shin_0.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/left_shin_1.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/left_shin_2.stl"/></geometry></collision>
+  </link>
+  <link name="right_shin">
+    <inertial><origin xyz="-5.12936e-07 -0.00062298 -0.047995" rpy="0 0 0"/><mass value="0.0682108"/><inertia ixx="2.4037e-05" ixy="4.46043e-10" ixz="-2.695e-10" iyy="1.49411e-05" iyz="-1.95131e-07" izz="1.35047e-05"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/right_shin_0.stl"/></geometry><material name="right_shin_right_shin_0"><color rgba="0.85 0.85 0.85 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/right_shin_1.stl"/></geometry><material name="right_shin_right_shin_1"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/right_shin_0.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/right_shin_1.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/right_shin_2.stl"/></geometry></collision>
+  </link>
+  <link name="left_ankle">
+    <inertial><origin xyz="0.00579184 0.0251189 -0.0291665" rpy="0 0 0"/><mass value="0.0753392"/><inertia ixx="2.41704e-05" ixy="-1.36876e-08" ixz="1.17742e-06" iyy="1.90551e-05" iyz="6.81933e-07" izz="2.54884e-05"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/left_ankle_0.stl"/></geometry><material name="left_ankle_left_ankle_0"><color rgba="0.85 0.85 0.85 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/left_ankle_1.stl"/></geometry><material name="left_ankle_left_ankle_1"><color rgba="0.01 0.01 0.01 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/left_ankle_2.stl"/></geometry><material name="left_ankle_left_ankle_2"><color rgba="0.913 0.913 0.922 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/left_ankle_3.stl"/></geometry><material name="left_ankle_left_ankle_3"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/left_ankle_0.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/left_ankle_1.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/left_ankle_2.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/left_ankle_3.stl"/></geometry></collision>
+  </link>
+  <link name="right_ankle">
+    <inertial><origin xyz="0.00569922 -0.0251189 -0.0291848" rpy="0 0 0"/><mass value="0.0753392"/><inertia ixx="2.41783e-05" ixy="1.15145e-08" ixz="1.18075e-06" iyy="1.90554e-05" iyz="-6.81596e-07" izz="2.54809e-05"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/right_ankle_0.stl"/></geometry><material name="right_ankle_right_ankle_0"><color rgba="0.85 0.85 0.85 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/right_ankle_1.stl"/></geometry><material name="right_ankle_right_ankle_1"><color rgba="0.01 0.01 0.01 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/right_ankle_2.stl"/></geometry><material name="right_ankle_right_ankle_2"><color rgba="0.913 0.913 0.922 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/right_ankle_3.stl"/></geometry><material name="right_ankle_right_ankle_3"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/right_ankle_0.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/right_ankle_1.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/right_ankle_2.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/right_ankle_3.stl"/></geometry></collision>
+  </link>
+  <link name="left_shin_shell">
+    <inertial><origin xyz="0.00484595 -4.44089e-16 0.0300445" rpy="0 0 0"/><mass value="0.00537234"/><inertia ixx="3.31416e-06" ixy="-2.75146e-20" ixz="3.52074e-09" iyy="1.3252e-06" iyz="4.59957e-21" izz="2.21802e-06"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/left_shin_shell_0.stl"/></geometry><material name="left_shin_shell_left_shin_shell_0"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/left_shin_shell_0.stl"/></geometry></collision>
+  </link>
+  <link name="right_shin_shell">
+    <inertial><origin xyz="0.00494242 0.001 0.0300287" rpy="0 0 0"/><mass value="0.00537234"/><inertia ixx="3.31417e-06" ixy="-5.21475e-20" ixz="-9.90955e-21" iyy="1.3252e-06" iyz="-1.16142e-21" izz="2.21801e-06"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/right_shin_shell_0.stl"/></geometry><material name="right_shin_shell_right_shin_shell_0"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/right_shin_shell_0.stl"/></geometry></collision>
+  </link>
+  <link name="left_foot">
+    <inertial><origin xyz="0.0240379 0.0145043 -0.0154256" rpy="0 0 0"/><mass value="0.0194946"/><inertia ixx="1.24604e-05" ixy="-2.88864e-07" ixz="2.2363e-07" iyy="2.88267e-05" iyz="1.80095e-06" izz="3.71136e-05"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/left_foot_0.stl"/></geometry><material name="left_foot_left_foot_0"><color rgba="0.01 0.01 0.01 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/left_foot_1.stl"/></geometry><material name="left_foot_left_foot_1"><color rgba="0.913 0.913 0.922 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/left_foot_2.stl"/></geometry><material name="left_foot_left_foot_2"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/left_foot_0.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/left_foot_1.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/left_foot_2.stl"/></geometry></collision>
+  </link>
+  <link name="right_foot">
+    <inertial><origin xyz="0.023998 -0.0145043 -0.0155019" rpy="0 0 0"/><mass value="0.0194946"/><inertia ixx="1.24621e-05" ixy="2.83078e-07" ixz="3.02791e-07" iyy="2.88267e-05" iyz="-1.80188e-06" izz="3.71119e-05"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/right_foot_0.stl"/></geometry><material name="right_foot_right_foot_0"><color rgba="0.01 0.01 0.01 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/right_foot_1.stl"/></geometry><material name="right_foot_right_foot_1"><color rgba="0.913 0.913 0.922 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/right_foot_2.stl"/></geometry><material name="right_foot_right_foot_2"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/right_foot_0.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/right_foot_1.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/right_foot_2.stl"/></geometry></collision>
+  </link>
+  <link name="right_hand">
+    <inertial><origin xyz="0.0246956 -0.000647963 -0.0133264" rpy="0 0 0"/><mass value="0.0689837"/><inertia ixx="2.18105e-05" ixy="5.62446e-09" ixz="-8.89497e-08" iyy="2.92734e-05" iyz="-9.37271e-07" izz="1.29102e-05"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/right_hand_0.stl"/></geometry><material name="right_hand_right_hand_0"><color rgba="0.85 0.85 0.85 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/right_hand_1.stl"/></geometry><material name="right_hand_right_hand_1"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/right_hand_0.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/right_hand_1.stl"/></geometry></collision>
+  </link>
+  <link name="right_upper_arm">
+    <inertial><origin xyz="0.0244641 -0.00338954 -0.0168483" rpy="0 0 0"/><mass value="0.081462"/><inertia ixx="3.5831e-05" ixy="-1.27645e-07" ixz="-9.32084e-07" iyy="4.87341e-05" iyz="-3.46577e-06" izz="2.19169e-05"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/right_upper_arm_0.stl"/></geometry><material name="right_upper_arm_right_upper_arm_0"><color rgba="0.85 0.85 0.85 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/right_upper_arm_1.stl"/></geometry><material name="right_upper_arm_right_upper_arm_1"><color rgba="0.01 0.01 0.01 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/right_upper_arm_2.stl"/></geometry><material name="right_upper_arm_right_upper_arm_2"><color rgba="0.913 0.913 0.922 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/right_upper_arm_3.stl"/></geometry><material name="right_upper_arm_right_upper_arm_3"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/right_upper_arm_0.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/right_upper_arm_1.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/right_upper_arm_2.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/right_upper_arm_3.stl"/></geometry></collision>
+  </link>
+  <link name="left_hand">
+    <inertial><origin xyz="0.0246956 0.000648977 -0.0133265" rpy="0 0 0"/><mass value="0.0689837"/><inertia ixx="2.18103e-05" ixy="-4.72746e-09" ixz="-8.89672e-08" iyy="2.92733e-05" iyz="9.36669e-07" izz="1.29101e-05"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/left_hand_0.stl"/></geometry><material name="left_hand_left_hand_0"><color rgba="0.85 0.85 0.85 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/left_hand_1.stl"/></geometry><material name="left_hand_left_hand_1"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/left_hand_0.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/left_hand_1.stl"/></geometry></collision>
+  </link>
+  <link name="left_upper_arm">
+    <inertial><origin xyz="0.0244641 0.00339038 -0.0168482" rpy="0 0 0"/><mass value="0.081462"/><inertia ixx="3.58309e-05" ixy="1.28533e-07" ixz="-9.31949e-07" iyy="4.87343e-05" iyz="3.46492e-06" izz="2.19165e-05"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/left_upper_arm_0.stl"/></geometry><material name="left_upper_arm_left_upper_arm_0"><color rgba="0.85 0.85 0.85 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/left_upper_arm_1.stl"/></geometry><material name="left_upper_arm_left_upper_arm_1"><color rgba="0.01 0.01 0.01 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/left_upper_arm_2.stl"/></geometry><material name="left_upper_arm_left_upper_arm_2"><color rgba="0.913 0.913 0.922 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/left_upper_arm_3.stl"/></geometry><material name="left_upper_arm_left_upper_arm_3"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/left_upper_arm_0.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/left_upper_arm_1.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/left_upper_arm_2.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/left_upper_arm_3.stl"/></geometry></collision>
+  </link>
+  <link name="chest">
+    <inertial><origin xyz="0.000541901 -7.72924e-06 0.0508825" rpy="0 0 0"/><mass value="0.264404"/><inertia ixx="0.000500553" ixy="6.417e-08" ixz="-2.67707e-07" iyy="0.000298857" iyz="-5.3358e-09" izz="0.000299475"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/chest_0.stl"/></geometry><material name="chest_chest_0"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/chest_1.stl"/></geometry><material name="chest_chest_1"><color rgba="0.05 0.05 0.05 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/chest_2.stl"/></geometry><material name="chest_chest_2"><color rgba="0.352 0.352 0.352 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/chest_3.stl"/></geometry><material name="chest_chest_3"><color rgba="0.913 0.913 0.922 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/chest_4.stl"/></geometry><material name="chest_chest_4"><color rgba="0 0 0 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/chest_0.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/chest_1.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/chest_2.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/chest_3.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/chest_4.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/chest_5.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/chest_6.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/chest_7.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/chest_8.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/chest_9.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/chest_10.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/chest_11.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/chest_12.stl"/></geometry></collision>
+  </link>
+  <link name="right_shoulder">
+    <inertial><origin xyz="-0.00104405 -0.0158659 -0.00543142" rpy="0 0 0"/><mass value="0.018709"/><inertia ixx="1.40638e-05" ixy="-4.33763e-07" ixz="-6.40086e-08" iyy="1.03976e-05" iyz="-4.06589e-07" izz="2.00885e-05"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/right_shoulder_0.stl"/></geometry><material name="right_shoulder_right_shoulder_0"><color rgba="0.913 0.913 0.922 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/right_shoulder_1.stl"/></geometry><material name="right_shoulder_right_shoulder_1"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/right_shoulder_2.stl"/></geometry><material name="right_shoulder_right_shoulder_2"><color rgba="0.01 0.01 0.01 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/right_shoulder_0.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/right_shoulder_1.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/right_shoulder_2.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/right_shoulder_3.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/right_shoulder_4.stl"/></geometry></collision>
+  </link>
+  <link name="left_shoulder">
+    <inertial><origin xyz="-0.00103187 0.0159004 -0.00543143" rpy="0 0 0"/><mass value="0.018709"/><inertia ixx="1.40638e-05" ixy="4.3378e-07" ixz="-6.40059e-08" iyy="1.03976e-05" iyz="4.06589e-07" izz="2.00884e-05"/></inertial>
+    <visual><geometry><mesh filename="meshes/visual/left_shoulder_0.stl"/></geometry><material name="left_shoulder_left_shoulder_0"><color rgba="0.913 0.913 0.922 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/left_shoulder_1.stl"/></geometry><material name="left_shoulder_left_shoulder_1"><color rgba="0.922 0.922 0.896 1"/></material></visual>
+    <visual><geometry><mesh filename="meshes/visual/left_shoulder_2.stl"/></geometry><material name="left_shoulder_left_shoulder_2"><color rgba="0.01 0.01 0.01 1"/></material></visual>
+    <collision><geometry><mesh filename="meshes/collision/left_shoulder_0.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/left_shoulder_1.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/left_shoulder_2.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/left_shoulder_3.stl"/></geometry></collision>
+    <collision><geometry><mesh filename="meshes/collision/left_shoulder_4.stl"/></geometry></collision>
+  </link>
+  <joint name="waist_yaw" type="revolute"><parent link="pelvis"/><child link="chest"/><origin xyz="-0.00225966 -3.42493e-17 0.0193473" rpy="0 0 0"/><axis xyz="0 0 1"/><limit lower="-1.5708" upper="1.5708" effort="2.0" velocity="6.0"/><dynamics damping="0.05" friction="0.0"/></joint>
+  <joint name="left_hip_roll" type="revolute"><parent link="pelvis"/><child link="left_hip"/><origin xyz="-0.0272597 0.0374878 -0.0171027" rpy="0 0 0"/><axis xyz="1 0 0"/><limit lower="-1.5708" upper="1.5708" effort="2.0" velocity="6.0"/><dynamics damping="0.05" friction="0.0"/></joint>
+  <joint name="right_hip_roll" type="revolute"><parent link="pelvis"/><child link="right_hip"/><origin xyz="-0.0272597 -0.0375 -0.0171027" rpy="0 0 0"/><axis xyz="1 0 0"/><limit lower="-1.5708" upper="1.5708" effort="2.0" velocity="6.0"/><dynamics damping="0.05" friction="0.0"/></joint>
+  <joint name="left_shoulder_pitch" type="revolute"><parent link="chest"/><child link="left_shoulder"/><origin xyz="-1.21797e-05 0.0545112 0.0710658" rpy="0 0 0"/><axis xyz="0 0.9877 0.156359"/><limit lower="-1.5708" upper="1.5708" effort="2.0" velocity="6.0"/><dynamics damping="0.05" friction="0.0"/></joint>
+  <joint name="right_shoulder_pitch" type="revolute"><parent link="chest"/><child link="right_shoulder"/><origin xyz="-1.86483e-16 -0.0545457 0.0710658" rpy="0 0 0"/><axis xyz="0 0.987735 -0.15614"/><limit lower="-1.5708" upper="1.5708" effort="2.0" velocity="6.0"/><dynamics damping="0.05" friction="0.0"/></joint>
+  <joint name="left_hip_pitch" type="revolute"><parent link="left_hip"/><child link="left_thigh"/><origin xyz="0.0184989 -0.0149878 -0.0314889" rpy="0 0 0"/><axis xyz="0 1 0"/><limit lower="-1.5708" upper="1.5708" effort="2.0" velocity="6.0"/><dynamics damping="0.05" friction="0.0"/></joint>
+  <joint name="left_thigh_shell" type="revolute"><parent link="left_hip"/><child link="left_thigh_shell"/><origin xyz="0.0364375 0.0100122 -0.0134375" rpy="0 0 0"/><axis xyz="0 1 0"/><limit lower="-3.1416" upper="3.1416" effort="2.0" velocity="6.0"/><dynamics damping="0.005" friction="0.0"/><mimic joint="left_hip_pitch" multiplier="1" offset="0"/></joint>
+  <joint name="right_hip_pitch" type="revolute"><parent link="right_hip"/><child link="right_thigh"/><origin xyz="0.0185 0.015 -0.0314878" rpy="0 0 0"/><axis xyz="0 1 0"/><limit lower="-1.5708" upper="1.5708" effort="2.0" velocity="6.0"/><dynamics damping="0.05" friction="0.0"/></joint>
+  <joint name="right_thigh_shell" type="revolute"><parent link="right_hip"/><child link="right_thigh_shell"/><origin xyz="0.0364375 -0.01 -0.0134375" rpy="0 0 0"/><axis xyz="0 1 0"/><limit lower="-3.1416" upper="3.1416" effort="2.0" velocity="6.0"/><dynamics damping="0.005" friction="0.0"/><mimic joint="right_hip_pitch" multiplier="1" offset="0"/></joint>
+  <joint name="left_shoulder_roll" type="revolute"><parent link="left_shoulder"/><child link="left_upper_arm"/><origin xyz="-0.0249878 0.0381021 -0.00870158" rpy="0 0 0"/><axis xyz="1 0 0"/><limit lower="-1.5708" upper="1.5708" effort="2.0" velocity="6.0"/><dynamics damping="0.05" friction="0.0"/></joint>
+  <joint name="right_shoulder_roll" type="revolute"><parent link="right_shoulder"/><child link="right_upper_arm"/><origin xyz="-0.025 -0.0380676 -0.00870158" rpy="0 0 0"/><axis xyz="1 0 0"/><limit lower="-1.5708" upper="1.5708" effort="2.0" velocity="6.0"/><dynamics damping="0.05" friction="0.0"/></joint>
+  <joint name="left_knee_upper" type="revolute"><parent link="left_thigh"/><child link="left_knee"/><origin xyz="0.000195213 0.025 -0.0604397" rpy="0 0 0"/><axis xyz="0 1 0"/><limit lower="-3.1416" upper="3.1416" effort="2.0" velocity="6.0"/><dynamics damping="0.005" friction="0.0"/><mimic joint="left_hip_pitch" multiplier="-1" offset="0"/></joint>
+  <joint name="right_knee_upper" type="revolute"><parent link="right_thigh"/><child link="right_knee"/><origin xyz="-0.00014275 -0.025 -0.0604124" rpy="0 0 0"/><axis xyz="0 1 0"/><limit lower="-3.1416" upper="3.1416" effort="2.0" velocity="6.0"/><dynamics damping="0.005" friction="0.0"/><mimic joint="right_hip_pitch" multiplier="-1" offset="0"/></joint>
+  <joint name="left_elbow" type="revolute"><parent link="left_upper_arm"/><child link="left_hand"/><origin xyz="-0.00025 0.00950636 -0.0607642" rpy="0 0 0"/><axis xyz="1 0 0"/><limit lower="-1.5708" upper="1.5708" effort="2.0" velocity="6.0"/><dynamics damping="0.05" friction="0.0"/></joint>
+  <joint name="right_elbow" type="revolute"><parent link="right_upper_arm"/><child link="right_hand"/><origin xyz="-0.00025 -0.00950636 -0.0607642" rpy="0 0 0"/><axis xyz="1 0 0"/><limit lower="-1.5708" upper="1.5708" effort="2.0" velocity="6.0"/><dynamics damping="0.05" friction="0.0"/></joint>
+  <joint name="left_knee_lower" type="revolute"><parent link="left_knee"/><child link="left_shin"/><origin xyz="6.82751e-05 0 -0.0212568" rpy="0 0 0"/><axis xyz="0 1 0"/><limit lower="-3.1416" upper="3.1416" effort="2.0" velocity="6.0"/><dynamics damping="0.005" friction="0.0"/><mimic joint="left_knee_pitch" multiplier="-1" offset="0"/></joint>
+  <joint name="right_knee_lower" type="revolute"><parent link="right_knee"/><child link="right_shin"/><origin xyz="-0.00014275 0 -0.0212282" rpy="0 0 0"/><axis xyz="0 1 0"/><limit lower="-3.1416" upper="3.1416" effort="2.0" velocity="6.0"/><dynamics damping="0.005" friction="0.0"/><mimic joint="right_knee_pitch" multiplier="-1" offset="0"/></joint>
+  <joint name="left_knee_pitch" type="revolute"><parent link="left_shin"/><child link="left_ankle"/><origin xyz="0.000195213 -0.025 -0.0604397" rpy="0 0 0"/><axis xyz="0 1 0"/><limit lower="-1.5708" upper="1.5708" effort="2.0" velocity="6.0"/><dynamics damping="0.05" friction="0.0"/></joint>
+  <joint name="right_knee_pitch" type="revolute"><parent link="right_shin"/><child link="right_ankle"/><origin xyz="-3.44343e-16 0.024 -0.0604412" rpy="0 0 0"/><axis xyz="0 1 0"/><limit lower="-1.5708" upper="1.5708" effort="2.0" velocity="6.0"/><dynamics damping="0.05" friction="0.0"/></joint>
+  <joint name="left_ankle_roll" type="revolute"><parent link="left_ankle"/><child link="left_foot"/><origin xyz="-0.01839 0.0149878 -0.0315474" rpy="0 0 0"/><axis xyz="1 0 0"/><limit lower="-1.5708" upper="1.5708" effort="2.0" velocity="6.0"/><dynamics damping="0.05" friction="0.0"/></joint>
+  <joint name="left_shin_shell" type="revolute"><parent link="left_ankle"/><child link="left_shin_shell"/><origin xyz="0.0181993 0.025 -0.0179018" rpy="0 0 0"/><axis xyz="0 1 0"/><limit lower="-3.1416" upper="3.1416" effort="2.0" velocity="6.0"/><dynamics damping="0.005" friction="0.0"/><mimic joint="left_knee_pitch" multiplier="-1" offset="0"/></joint>
+  <joint name="right_ankle_roll" type="revolute"><parent link="right_ankle"/><child link="right_foot"/><origin xyz="-0.0185 -0.0149878 -0.0314878" rpy="0 0 0"/><axis xyz="1 0 0"/><limit lower="-1.5708" upper="1.5708" effort="2.0" velocity="6.0"/><dynamics damping="0.05" friction="0.0"/></joint>
+  <joint name="right_shin_shell" type="revolute"><parent link="right_ankle"/><child link="right_shin_shell"/><origin xyz="0.0181427 -0.025 -0.0179591" rpy="0 0 0"/><axis xyz="0 1 0"/><limit lower="-3.1416" upper="3.1416" effort="2.0" velocity="6.0"/><dynamics damping="0.005" friction="0.0"/><mimic joint="right_knee_pitch" multiplier="-1" offset="0"/></joint>
+</robot>

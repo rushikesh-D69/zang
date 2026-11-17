@@ -1,0 +1,12 @@
+## Managed (registry) dependencies of the Zang P4 firmware. Pinned to minor versions; `idf.py update-dependencies` to bump.
+dependencies:
+  idf: ">=5.5,<6.0"
+  # Wi-Fi/BLE via the ESP32-C2 co-processor (ESP-Hosted over UART). esp_wifi_remote makes esp_wifi_* calls work on the P4.
+  espressif/esp_hosted: "^2"
+  espressif/esp_wifi_remote: "^1"
+  espressif/mdns: "^1"
+  # Display controllers not built into esp_lcd (ST7789 is built in).
+  espressif/esp_lcd_ili9341: "^2"
+  espressif/esp_lcd_gc9a01: "^2"
+  # Camera sensor drivers (OV2640 over DVP); used with IDF's esp_cam_ctlr_dvp, without esp_video.
+  espressif/esp_cam_sensor: "^2.7"

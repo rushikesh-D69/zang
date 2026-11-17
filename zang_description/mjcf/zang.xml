@@ -1,0 +1,494 @@
+<mujoco model="zang">
+  <compiler angle="radian" autolimits="true"/>
+  <option timestep="0.002" integrator="implicitfast"/>
+  <default>
+    <default class="servo">
+      <joint range="-1.5708 1.5708" damping="0.05" armature="0.005" frictionloss="0.01"/>
+      <position kp="8.0" ctrlrange="-1.5708 1.5708" forcerange="-2.0 2.0"/>
+    </default>
+    <default class="passive">
+      <joint damping="0.005" armature="0.0005"/>
+    </default>
+    <default class="visual">
+      <geom type="mesh" contype="0" conaffinity="0" group="2" density="0"/>
+    </default>
+    <default class="collision">
+      <geom type="mesh" group="3" density="0" rgba="0.2 0.6 0.9 0.3" friction="0.9 0.01 0.001"/>
+    </default>
+  </default>
+  <asset>
+    <mesh name="right_hip_0" file="../meshes/visual/right_hip_0.stl"/>
+    <mesh name="right_hip_1" file="../meshes/visual/right_hip_1.stl"/>
+    <mesh name="right_hip_2" file="../meshes/visual/right_hip_2.stl"/>
+    <mesh name="right_hip_3" file="../meshes/visual/right_hip_3.stl"/>
+    <mesh name="col_right_hip_0" file="../meshes/collision/right_hip_0.stl"/>
+    <mesh name="col_right_hip_1" file="../meshes/collision/right_hip_1.stl"/>
+    <mesh name="col_right_hip_2" file="../meshes/collision/right_hip_2.stl"/>
+    <mesh name="col_right_hip_3" file="../meshes/collision/right_hip_3.stl"/>
+    <mesh name="pelvis_0" file="../meshes/visual/pelvis_0.stl"/>
+    <mesh name="pelvis_1" file="../meshes/visual/pelvis_1.stl"/>
+    <mesh name="pelvis_2" file="../meshes/visual/pelvis_2.stl"/>
+    <mesh name="pelvis_3" file="../meshes/visual/pelvis_3.stl"/>
+    <mesh name="col_pelvis_0" file="../meshes/collision/pelvis_0.stl"/>
+    <mesh name="col_pelvis_1" file="../meshes/collision/pelvis_1.stl"/>
+    <mesh name="col_pelvis_2" file="../meshes/collision/pelvis_2.stl"/>
+    <mesh name="col_pelvis_3" file="../meshes/collision/pelvis_3.stl"/>
+    <mesh name="col_pelvis_4" file="../meshes/collision/pelvis_4.stl"/>
+    <mesh name="col_pelvis_5" file="../meshes/collision/pelvis_5.stl"/>
+    <mesh name="col_pelvis_6" file="../meshes/collision/pelvis_6.stl"/>
+    <mesh name="left_hip_0" file="../meshes/visual/left_hip_0.stl"/>
+    <mesh name="left_hip_1" file="../meshes/visual/left_hip_1.stl"/>
+    <mesh name="left_hip_2" file="../meshes/visual/left_hip_2.stl"/>
+    <mesh name="left_hip_3" file="../meshes/visual/left_hip_3.stl"/>
+    <mesh name="col_left_hip_0" file="../meshes/collision/left_hip_0.stl"/>
+    <mesh name="col_left_hip_1" file="../meshes/collision/left_hip_1.stl"/>
+    <mesh name="col_left_hip_2" file="../meshes/collision/left_hip_2.stl"/>
+    <mesh name="col_left_hip_3" file="../meshes/collision/left_hip_3.stl"/>
+    <mesh name="left_thigh_shell_0" file="../meshes/visual/left_thigh_shell_0.stl"/>
+    <mesh name="col_left_thigh_shell_0" file="../meshes/collision/left_thigh_shell_0.stl"/>
+    <mesh name="right_thigh_shell_0" file="../meshes/visual/right_thigh_shell_0.stl"/>
+    <mesh name="col_right_thigh_shell_0" file="../meshes/collision/right_thigh_shell_0.stl"/>
+    <mesh name="left_knee_0" file="../meshes/visual/left_knee_0.stl"/>
+    <mesh name="col_left_knee_0" file="../meshes/collision/left_knee_0.stl"/>
+    <mesh name="right_knee_0" file="../meshes/visual/right_knee_0.stl"/>
+    <mesh name="col_right_knee_0" file="../meshes/collision/right_knee_0.stl"/>
+    <mesh name="right_thigh_0" file="../meshes/visual/right_thigh_0.stl"/>
+    <mesh name="right_thigh_1" file="../meshes/visual/right_thigh_1.stl"/>
+    <mesh name="col_right_thigh_0" file="../meshes/collision/right_thigh_0.stl"/>
+    <mesh name="col_right_thigh_1" file="../meshes/collision/right_thigh_1.stl"/>
+    <mesh name="col_right_thigh_2" file="../meshes/collision/right_thigh_2.stl"/>
+    <mesh name="left_thigh_0" file="../meshes/visual/left_thigh_0.stl"/>
+    <mesh name="left_thigh_1" file="../meshes/visual/left_thigh_1.stl"/>
+    <mesh name="col_left_thigh_0" file="../meshes/collision/left_thigh_0.stl"/>
+    <mesh name="col_left_thigh_1" file="../meshes/collision/left_thigh_1.stl"/>
+    <mesh name="col_left_thigh_2" file="../meshes/collision/left_thigh_2.stl"/>
+    <mesh name="left_shin_0" file="../meshes/visual/left_shin_0.stl"/>
+    <mesh name="left_shin_1" file="../meshes/visual/left_shin_1.stl"/>
+    <mesh name="col_left_shin_0" file="../meshes/collision/left_shin_0.stl"/>
+    <mesh name="col_left_shin_1" file="../meshes/collision/left_shin_1.stl"/>
+    <mesh name="col_left_shin_2" file="../meshes/collision/left_shin_2.stl"/>
+    <mesh name="right_shin_0" file="../meshes/visual/right_shin_0.stl"/>
+    <mesh name="right_shin_1" file="../meshes/visual/right_shin_1.stl"/>
+    <mesh name="col_right_shin_0" file="../meshes/collision/right_shin_0.stl"/>
+    <mesh name="col_right_shin_1" file="../meshes/collision/right_shin_1.stl"/>
+    <mesh name="col_right_shin_2" file="../meshes/collision/right_shin_2.stl"/>
+    <mesh name="left_ankle_0" file="../meshes/visual/left_ankle_0.stl"/>
+    <mesh name="left_ankle_1" file="../meshes/visual/left_ankle_1.stl"/>
+    <mesh name="left_ankle_2" file="../meshes/visual/left_ankle_2.stl"/>
+    <mesh name="left_ankle_3" file="../meshes/visual/left_ankle_3.stl"/>
+    <mesh name="col_left_ankle_0" file="../meshes/collision/left_ankle_0.stl"/>
+    <mesh name="col_left_ankle_1" file="../meshes/collision/left_ankle_1.stl"/>
+    <mesh name="col_left_ankle_2" file="../meshes/collision/left_ankle_2.stl"/>
+    <mesh name="col_left_ankle_3" file="../meshes/collision/left_ankle_3.stl"/>
+    <mesh name="right_ankle_0" file="../meshes/visual/right_ankle_0.stl"/>
+    <mesh name="right_ankle_1" file="../meshes/visual/right_ankle_1.stl"/>
+    <mesh name="right_ankle_2" file="../meshes/visual/right_ankle_2.stl"/>
+    <mesh name="right_ankle_3" file="../meshes/visual/right_ankle_3.stl"/>
+    <mesh name="col_right_ankle_0" file="../meshes/collision/right_ankle_0.stl"/>
+    <mesh name="col_right_ankle_1" file="../meshes/collision/right_ankle_1.stl"/>
+    <mesh name="col_right_ankle_2" file="../meshes/collision/right_ankle_2.stl"/>
+    <mesh name="col_right_ankle_3" file="../meshes/collision/right_ankle_3.stl"/>
+    <mesh name="left_shin_shell_0" file="../meshes/visual/left_shin_shell_0.stl"/>
+    <mesh name="col_left_shin_shell_0" file="../meshes/collision/left_shin_shell_0.stl"/>
+    <mesh name="right_shin_shell_0" file="../meshes/visual/right_shin_shell_0.stl"/>
+    <mesh name="col_right_shin_shell_0" file="../meshes/collision/right_shin_shell_0.stl"/>
+    <mesh name="left_foot_0" file="../meshes/visual/left_foot_0.stl"/>
+    <mesh name="left_foot_1" file="../meshes/visual/left_foot_1.stl"/>
+    <mesh name="left_foot_2" file="../meshes/visual/left_foot_2.stl"/>
+    <mesh name="col_left_foot_0" file="../meshes/collision/left_foot_0.stl"/>
+    <mesh name="col_left_foot_1" file="../meshes/collision/left_foot_1.stl"/>
+    <mesh name="col_left_foot_2" file="../meshes/collision/left_foot_2.stl"/>
+    <mesh name="right_foot_0" file="../meshes/visual/right_foot_0.stl"/>
+    <mesh name="right_foot_1" file="../meshes/visual/right_foot_1.stl"/>
+    <mesh name="right_foot_2" file="../meshes/visual/right_foot_2.stl"/>
+    <mesh name="col_right_foot_0" file="../meshes/collision/right_foot_0.stl"/>
+    <mesh name="col_right_foot_1" file="../meshes/collision/right_foot_1.stl"/>
+    <mesh name="col_right_foot_2" file="../meshes/collision/right_foot_2.stl"/>
+    <mesh name="right_hand_0" file="../meshes/visual/right_hand_0.stl"/>
+    <mesh name="right_hand_1" file="../meshes/visual/right_hand_1.stl"/>
+    <mesh name="col_right_hand_0" file="../meshes/collision/right_hand_0.stl"/>
+    <mesh name="col_right_hand_1" file="../meshes/collision/right_hand_1.stl"/>
+    <mesh name="right_upper_arm_0" file="../meshes/visual/right_upper_arm_0.stl"/>
+    <mesh name="right_upper_arm_1" file="../meshes/visual/right_upper_arm_1.stl"/>
+    <mesh name="right_upper_arm_2" file="../meshes/visual/right_upper_arm_2.stl"/>
+    <mesh name="right_upper_arm_3" file="../meshes/visual/right_upper_arm_3.stl"/>
+    <mesh name="col_right_upper_arm_0" file="../meshes/collision/right_upper_arm_0.stl"/>
+    <mesh name="col_right_upper_arm_1" file="../meshes/collision/right_upper_arm_1.stl"/>
+    <mesh name="col_right_upper_arm_2" file="../meshes/collision/right_upper_arm_2.stl"/>
+    <mesh name="col_right_upper_arm_3" file="../meshes/collision/right_upper_arm_3.stl"/>
+    <mesh name="left_hand_0" file="../meshes/visual/left_hand_0.stl"/>
+    <mesh name="left_hand_1" file="../meshes/visual/left_hand_1.stl"/>
+    <mesh name="col_left_hand_0" file="../meshes/collision/left_hand_0.stl"/>
+    <mesh name="col_left_hand_1" file="../meshes/collision/left_hand_1.stl"/>
+    <mesh name="left_upper_arm_0" file="../meshes/visual/left_upper_arm_0.stl"/>
+    <mesh name="left_upper_arm_1" file="../meshes/visual/left_upper_arm_1.stl"/>
+    <mesh name="left_upper_arm_2" file="../meshes/visual/left_upper_arm_2.stl"/>
+    <mesh name="left_upper_arm_3" file="../meshes/visual/left_upper_arm_3.stl"/>
+    <mesh name="col_left_upper_arm_0" file="../meshes/collision/left_upper_arm_0.stl"/>
+    <mesh name="col_left_upper_arm_1" file="../meshes/collision/left_upper_arm_1.stl"/>
+    <mesh name="col_left_upper_arm_2" file="../meshes/collision/left_upper_arm_2.stl"/>
+    <mesh name="col_left_upper_arm_3" file="../meshes/collision/left_upper_arm_3.stl"/>
+    <mesh name="chest_0" file="../meshes/visual/chest_0.stl"/>
+    <mesh name="chest_1" file="../meshes/visual/chest_1.stl"/>
+    <mesh name="chest_2" file="../meshes/visual/chest_2.stl"/>
+    <mesh name="chest_3" file="../meshes/visual/chest_3.stl"/>
+    <mesh name="chest_4" file="../meshes/visual/chest_4.stl"/>
+    <mesh name="col_chest_0" file="../meshes/collision/chest_0.stl"/>
+    <mesh name="col_chest_1" file="../meshes/collision/chest_1.stl"/>
+    <mesh name="col_chest_2" file="../meshes/collision/chest_2.stl"/>
+    <mesh name="col_chest_3" file="../meshes/collision/chest_3.stl"/>
+    <mesh name="col_chest_4" file="../meshes/collision/chest_4.stl"/>
+    <mesh name="col_chest_5" file="../meshes/collision/chest_5.stl"/>
+    <mesh name="col_chest_6" file="../meshes/collision/chest_6.stl"/>
+    <mesh name="col_chest_7" file="../meshes/collision/chest_7.stl"/>
+    <mesh name="col_chest_8" file="../meshes/collision/chest_8.stl"/>
+    <mesh name="col_chest_9" file="../meshes/collision/chest_9.stl"/>
+    <mesh name="col_chest_10" file="../meshes/collision/chest_10.stl"/>
+    <mesh name="col_chest_11" file="../meshes/collision/chest_11.stl"/>
+    <mesh name="col_chest_12" file="../meshes/collision/chest_12.stl"/>
+    <mesh name="right_shoulder_0" file="../meshes/visual/right_shoulder_0.stl"/>
+    <mesh name="right_shoulder_1" file="../meshes/visual/right_shoulder_1.stl"/>
+    <mesh name="right_shoulder_2" file="../meshes/visual/right_shoulder_2.stl"/>
+    <mesh name="col_right_shoulder_0" file="../meshes/collision/right_shoulder_0.stl"/>
+    <mesh name="col_right_shoulder_1" file="../meshes/collision/right_shoulder_1.stl"/>
+    <mesh name="col_right_shoulder_2" file="../meshes/collision/right_shoulder_2.stl"/>
+    <mesh name="col_right_shoulder_3" file="../meshes/collision/right_shoulder_3.stl"/>
+    <mesh name="col_right_shoulder_4" file="../meshes/collision/right_shoulder_4.stl"/>
+    <mesh name="left_shoulder_0" file="../meshes/visual/left_shoulder_0.stl"/>
+    <mesh name="left_shoulder_1" file="../meshes/visual/left_shoulder_1.stl"/>
+    <mesh name="left_shoulder_2" file="../meshes/visual/left_shoulder_2.stl"/>
+    <mesh name="col_left_shoulder_0" file="../meshes/collision/left_shoulder_0.stl"/>
+    <mesh name="col_left_shoulder_1" file="../meshes/collision/left_shoulder_1.stl"/>
+    <mesh name="col_left_shoulder_2" file="../meshes/collision/left_shoulder_2.stl"/>
+    <mesh name="col_left_shoulder_3" file="../meshes/collision/left_shoulder_3.stl"/>
+    <mesh name="col_left_shoulder_4" file="../meshes/collision/left_shoulder_4.stl"/>
+  </asset>
+  <worldbody>
+    <body name="pelvis" pos="0 0 0.247926">
+      <freejoint/>
+      <inertial pos="-0.00928268 -3.88369e-07 -0.00454699" mass="0.0900889" fullinertia="4.32497e-05 4.13266e-05 5.2242e-05 8.01818e-11 -5.78561e-07 -4.2782e-10"/>
+      <geom class="visual" mesh="pelvis_0" rgba="0.85 0.85 0.85 1"/>
+      <geom class="visual" mesh="pelvis_1" rgba="0.01 0.01 0.01 1"/>
+      <geom class="visual" mesh="pelvis_2" rgba="0.913 0.913 0.922 1"/>
+      <geom class="visual" mesh="pelvis_3" rgba="0.922 0.922 0.896 1"/>
+      <geom class="collision" mesh="col_pelvis_0"/>
+      <geom class="collision" mesh="col_pelvis_1"/>
+      <geom class="collision" mesh="col_pelvis_2"/>
+      <geom class="collision" mesh="col_pelvis_3"/>
+      <geom class="collision" mesh="col_pelvis_4"/>
+      <geom class="collision" mesh="col_pelvis_5"/>
+      <geom class="collision" mesh="col_pelvis_6"/>
+      <body name="chest" pos="-0.00225966 -3.42493e-17 0.0193473">
+        <joint name="waist_yaw" class="servo" axis="0 0 1"/>
+        <inertial pos="0.000541901 -7.72924e-06 0.0508825" mass="0.264404" fullinertia="0.000500553 0.000298857 0.000299475 6.417e-08 -2.67707e-07 -5.3358e-09"/>
+        <geom class="visual" mesh="chest_0" rgba="0.922 0.922 0.896 1"/>
+        <geom class="visual" mesh="chest_1" rgba="0.05 0.05 0.05 1"/>
+        <geom class="visual" mesh="chest_2" rgba="0.352 0.352 0.352 1"/>
+        <geom class="visual" mesh="chest_3" rgba="0.913 0.913 0.922 1"/>
+        <geom class="visual" mesh="chest_4" rgba="0 0 0 1"/>
+        <geom class="collision" mesh="col_chest_0"/>
+        <geom class="collision" mesh="col_chest_1"/>
+        <geom class="collision" mesh="col_chest_2"/>
+        <geom class="collision" mesh="col_chest_3"/>
+        <geom class="collision" mesh="col_chest_4"/>
+        <geom class="collision" mesh="col_chest_5"/>
+        <geom class="collision" mesh="col_chest_6"/>
+        <geom class="collision" mesh="col_chest_7"/>
+        <geom class="collision" mesh="col_chest_8"/>
+        <geom class="collision" mesh="col_chest_9"/>
+        <geom class="collision" mesh="col_chest_10"/>
+        <geom class="collision" mesh="col_chest_11"/>
+        <geom class="collision" mesh="col_chest_12"/>
+        <body name="left_shoulder" pos="-1.21797e-05 0.0545112 0.0710658">
+          <joint name="left_shoulder_pitch" class="servo" axis="0 0.9877 0.156359"/>
+          <inertial pos="-0.00103187 0.0159004 -0.00543143" mass="0.018709" fullinertia="1.40638e-05 1.03976e-05 2.00884e-05 4.3378e-07 -6.40059e-08 4.06589e-07"/>
+          <geom class="visual" mesh="left_shoulder_0" rgba="0.913 0.913 0.922 1"/>
+          <geom class="visual" mesh="left_shoulder_1" rgba="0.922 0.922 0.896 1"/>
+          <geom class="visual" mesh="left_shoulder_2" rgba="0.01 0.01 0.01 1"/>
+          <geom class="collision" mesh="col_left_shoulder_0"/>
+          <geom class="collision" mesh="col_left_shoulder_1"/>
+          <geom class="collision" mesh="col_left_shoulder_2"/>
+          <geom class="collision" mesh="col_left_shoulder_3"/>
+          <geom class="collision" mesh="col_left_shoulder_4"/>
+          <body name="left_upper_arm" pos="-0.0249878 0.0381021 -0.00870158">
+            <joint name="left_shoulder_roll" class="servo" axis="1 0 0"/>
+            <inertial pos="0.0244641 0.00339038 -0.0168482" mass="0.081462" fullinertia="3.58309e-05 4.87343e-05 2.19165e-05 1.28533e-07 -9.31949e-07 3.46492e-06"/>
+            <geom class="visual" mesh="left_upper_arm_0" rgba="0.85 0.85 0.85 1"/>
+            <geom class="visual" mesh="left_upper_arm_1" rgba="0.01 0.01 0.01 1"/>
+            <geom class="visual" mesh="left_upper_arm_2" rgba="0.913 0.913 0.922 1"/>
+            <geom class="visual" mesh="left_upper_arm_3" rgba="0.922 0.922 0.896 1"/>
+            <geom class="collision" mesh="col_left_upper_arm_0"/>
+            <geom class="collision" mesh="col_left_upper_arm_1"/>
+            <geom class="collision" mesh="col_left_upper_arm_2"/>
+            <geom class="collision" mesh="col_left_upper_arm_3"/>
+            <body name="left_hand" pos="-0.00025 0.00950636 -0.0607642">
+              <joint name="left_elbow" class="servo" axis="1 0 0"/>
+              <inertial pos="0.0246956 0.000648977 -0.0133265" mass="0.0689837" fullinertia="2.18103e-05 2.92733e-05 1.29101e-05 -4.72746e-09 -8.89672e-08 9.36669e-07"/>
+              <geom class="visual" mesh="left_hand_0" rgba="0.85 0.85 0.85 1"/>
+              <geom class="visual" mesh="left_hand_1" rgba="0.922 0.922 0.896 1"/>
+              <geom class="collision" mesh="col_left_hand_0"/>
+              <geom class="collision" mesh="col_left_hand_1"/>
+            </body>
+          </body>
+        </body>
+        <body name="right_shoulder" pos="-1.86483e-16 -0.0545457 0.0710658">
+          <joint name="right_shoulder_pitch" class="servo" axis="0 0.987735 -0.15614"/>
+          <inertial pos="-0.00104405 -0.0158659 -0.00543142" mass="0.018709" fullinertia="1.40638e-05 1.03976e-05 2.00885e-05 -4.33763e-07 -6.40086e-08 -4.06589e-07"/>
+          <geom class="visual" mesh="right_shoulder_0" rgba="0.913 0.913 0.922 1"/>
+          <geom class="visual" mesh="right_shoulder_1" rgba="0.922 0.922 0.896 1"/>
+          <geom class="visual" mesh="right_shoulder_2" rgba="0.01 0.01 0.01 1"/>
+          <geom class="collision" mesh="col_right_shoulder_0"/>
+          <geom class="collision" mesh="col_right_shoulder_1"/>
+          <geom class="collision" mesh="col_right_shoulder_2"/>
+          <geom class="collision" mesh="col_right_shoulder_3"/>
+          <geom class="collision" mesh="col_right_shoulder_4"/>
+          <body name="right_upper_arm" pos="-0.025 -0.0380676 -0.00870158">
+            <joint name="right_shoulder_roll" class="servo" axis="1 0 0"/>
+            <inertial pos="0.0244641 -0.00338954 -0.0168483" mass="0.081462" fullinertia="3.5831e-05 4.87341e-05 2.19169e-05 -1.27645e-07 -9.32084e-07 -3.46577e-06"/>
+            <geom class="visual" mesh="right_upper_arm_0" rgba="0.85 0.85 0.85 1"/>
+            <geom class="visual" mesh="right_upper_arm_1" rgba="0.01 0.01 0.01 1"/>
+            <geom class="visual" mesh="right_upper_arm_2" rgba="0.913 0.913 0.922 1"/>
+            <geom class="visual" mesh="right_upper_arm_3" rgba="0.922 0.922 0.896 1"/>
+            <geom class="collision" mesh="col_right_upper_arm_0"/>
+            <geom class="collision" mesh="col_right_upper_arm_1"/>
+            <geom class="collision" mesh="col_right_upper_arm_2"/>
+            <geom class="collision" mesh="col_right_upper_arm_3"/>
+            <body name="right_hand" pos="-0.00025 -0.00950636 -0.0607642">
+              <joint name="right_elbow" class="servo" axis="1 0 0"/>
+              <inertial pos="0.0246956 -0.000647963 -0.0133264" mass="0.0689837" fullinertia="2.18105e-05 2.92734e-05 1.29102e-05 5.62446e-09 -8.89497e-08 -9.37271e-07"/>
+              <geom class="visual" mesh="right_hand_0" rgba="0.85 0.85 0.85 1"/>
+              <geom class="visual" mesh="right_hand_1" rgba="0.922 0.922 0.896 1"/>
+              <geom class="collision" mesh="col_right_hand_0"/>
+              <geom class="collision" mesh="col_right_hand_1"/>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="left_hip" pos="-0.0272597 0.0374878 -0.0171027">
+        <joint name="left_hip_roll" class="servo" axis="1 0 0"/>
+        <inertial pos="0.0241992 0.0101311 -0.00230306" mass="0.0753392" fullinertia="2.41783e-05 1.90554e-05 2.54809e-05 -1.15145e-08 -1.18075e-06 -6.81596e-07"/>
+        <geom class="visual" mesh="left_hip_0" rgba="0.85 0.85 0.85 1"/>
+        <geom class="visual" mesh="left_hip_1" rgba="0.922 0.922 0.896 1"/>
+        <geom class="visual" mesh="left_hip_2" rgba="0.01 0.01 0.01 1"/>
+        <geom class="visual" mesh="left_hip_3" rgba="0.913 0.913 0.922 1"/>
+        <geom class="collision" mesh="col_left_hip_0"/>
+        <geom class="collision" mesh="col_left_hip_1"/>
+        <geom class="collision" mesh="col_left_hip_2"/>
+        <geom class="collision" mesh="col_left_hip_3"/>
+        <body name="left_thigh" pos="0.0184989 -0.0149878 -0.0314889">
+          <joint name="left_hip_pitch" class="servo" axis="0 1 0"/>
+          <inertial pos="4.05447e-05 0.024671 -0.012445" mass="0.0682108" fullinertia="2.41701e-05 1.49411e-05 1.3638e-05 -4.11331e-11 3.40979e-08 -1.26588e-07"/>
+          <geom class="visual" mesh="left_thigh_0" rgba="0.85 0.85 0.85 1"/>
+          <geom class="visual" mesh="left_thigh_1" rgba="0.922 0.922 0.896 1"/>
+          <geom class="collision" mesh="col_left_thigh_0"/>
+          <geom class="collision" mesh="col_left_thigh_1"/>
+          <geom class="collision" mesh="col_left_thigh_2"/>
+          <body name="left_knee" pos="0.000195213 0.025 -0.0604397">
+            <joint name="left_knee_upper" class="passive" axis="0 1 0"/>
+            <site name="left_upper_loop_b" pos="0.0182264 1.59595e-16 0.0184302" size="0.002" group="4"/>
+            <site name="left_lower_loop_b" pos="0.0184127 -1.59595e-16 -0.0395695" size="0.002" group="4"/>
+            <inertial pos="0.0175654 -1.249e-16 -0.0105721" mass="0.00766893" fullinertia="4.65064e-06 2.51688e-06 3.39203e-06 -3.42037e-20 4.0426e-09 1.6961e-21"/>
+            <geom class="visual" mesh="left_knee_0" rgba="0.922 0.922 0.896 1"/>
+            <geom class="collision" mesh="col_left_knee_0"/>
+            <body name="left_shin" pos="6.82751e-05 0 -0.0212568">
+              <joint name="left_knee_lower" class="passive" axis="0 1 0"/>
+              <inertial pos="0.000154668 -0.000281057 -0.0479947" mass="0.0682108" fullinertia="2.40346e-05 1.49411e-05 1.35026e-05 2.62966e-10 3.40979e-08 5.80453e-08"/>
+              <geom class="visual" mesh="left_shin_0" rgba="0.85 0.85 0.85 1"/>
+              <geom class="visual" mesh="left_shin_1" rgba="0.922 0.922 0.896 1"/>
+              <geom class="collision" mesh="col_left_shin_0"/>
+              <geom class="collision" mesh="col_left_shin_1"/>
+              <geom class="collision" mesh="col_left_shin_2"/>
+              <body name="left_ankle" pos="0.000195213 -0.025 -0.0604397">
+                <joint name="left_knee_pitch" class="servo" axis="0 1 0"/>
+                <inertial pos="0.00579184 0.0251189 -0.0291665" mass="0.0753392" fullinertia="2.41704e-05 1.90551e-05 2.54884e-05 -1.36876e-08 1.17742e-06 6.81933e-07"/>
+                <geom class="visual" mesh="left_ankle_0" rgba="0.85 0.85 0.85 1"/>
+                <geom class="visual" mesh="left_ankle_1" rgba="0.01 0.01 0.01 1"/>
+                <geom class="visual" mesh="left_ankle_2" rgba="0.913 0.913 0.922 1"/>
+                <geom class="visual" mesh="left_ankle_3" rgba="0.922 0.922 0.896 1"/>
+                <geom class="collision" mesh="col_left_ankle_0"/>
+                <geom class="collision" mesh="col_left_ankle_1"/>
+                <geom class="collision" mesh="col_left_ankle_2"/>
+                <geom class="collision" mesh="col_left_ankle_3"/>
+                <body name="left_foot" pos="-0.01839 0.0149878 -0.0315474">
+                  <joint name="left_ankle_roll" class="servo" axis="1 0 0"/>
+                  <inertial pos="0.0240379 0.0145043 -0.0154256" mass="0.0194946" fullinertia="1.24604e-05 2.88267e-05 3.71136e-05 -2.88864e-07 2.2363e-07 1.80095e-06"/>
+                  <geom class="visual" mesh="left_foot_0" rgba="0.01 0.01 0.01 1"/>
+                  <geom class="visual" mesh="left_foot_1" rgba="0.913 0.913 0.922 1"/>
+                  <geom class="visual" mesh="left_foot_2" rgba="0.922 0.922 0.896 1"/>
+                  <geom class="collision" mesh="col_left_foot_0"/>
+                  <geom class="collision" mesh="col_left_foot_1"/>
+                  <geom class="collision" mesh="col_left_foot_2"/>
+                </body>
+                <body name="left_shin_shell" pos="0.0181993 0.025 -0.0179018">
+                  <joint name="left_shin_shell" class="passive" axis="0 1 0"/>
+                  <site name="left_lower_loop_a" pos="-5.00568e-05 -4.30211e-16 0.0600289" size="0.002" group="4"/>
+                  <inertial pos="0.00484595 -4.44089e-16 0.0300445" mass="0.00537234" fullinertia="3.31416e-06 1.3252e-06 2.21802e-06 -2.75146e-20 3.52074e-09 4.59957e-21"/>
+                  <geom class="visual" mesh="left_shin_shell_0" rgba="0.922 0.922 0.896 1"/>
+                  <geom class="collision" mesh="col_left_shin_shell_0"/>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+        <body name="left_thigh_shell" pos="0.0364375 0.0100122 -0.0134375">
+          <joint name="left_thigh_shell" class="passive" axis="0 1 0"/>
+          <site name="left_upper_loop_a" pos="0.00048299 7.63278e-17 -0.060061" size="0.002" group="4"/>
+          <inertial pos="0.0050723 4.85723e-17 -0.0300281" mass="0.00537234" fullinertia="3.31411e-06 1.3252e-06 2.21806e-06 1.03917e-20 7.6819e-09 4.40967e-21"/>
+          <geom class="visual" mesh="left_thigh_shell_0" rgba="0.922 0.922 0.896 1"/>
+          <geom class="collision" mesh="col_left_thigh_shell_0"/>
+        </body>
+      </body>
+      <body name="right_hip" pos="-0.0272597 -0.0375 -0.0171027">
+        <joint name="right_hip_roll" class="servo" axis="1 0 0"/>
+        <inertial pos="0.0241992 -0.0101189 -0.00230399" mass="0.0753392" fullinertia="2.41779e-05 1.90551e-05 2.54809e-05 1.14973e-08 -1.18163e-06 6.81973e-07"/>
+        <geom class="visual" mesh="right_hip_0" rgba="0.85 0.85 0.85 1"/>
+        <geom class="visual" mesh="right_hip_1" rgba="0.922 0.922 0.896 1"/>
+        <geom class="visual" mesh="right_hip_2" rgba="0.01 0.01 0.01 1"/>
+        <geom class="visual" mesh="right_hip_3" rgba="0.913 0.913 0.922 1"/>
+        <geom class="collision" mesh="col_right_hip_0"/>
+        <geom class="collision" mesh="col_right_hip_1"/>
+        <geom class="collision" mesh="col_right_hip_2"/>
+        <geom class="collision" mesh="col_right_hip_3"/>
+        <body name="right_thigh" pos="0.0185 0.015 -0.0314878">
+          <joint name="right_hip_pitch" class="servo" axis="0 1 0"/>
+          <inertial pos="5.12936e-07 -0.024671 -0.0124462" mass="0.0682108" fullinertia="2.41702e-05 1.49411e-05 1.36379e-05 -4.47722e-10 -2.695e-10 1.26588e-07"/>
+          <geom class="visual" mesh="right_thigh_0" rgba="0.85 0.85 0.85 1"/>
+          <geom class="visual" mesh="right_thigh_1" rgba="0.922 0.922 0.896 1"/>
+          <geom class="collision" mesh="col_right_thigh_0"/>
+          <geom class="collision" mesh="col_right_thigh_1"/>
+          <geom class="collision" mesh="col_right_thigh_2"/>
+          <body name="right_knee" pos="-0.00014275 -0.025 -0.0604124">
+            <joint name="right_knee_upper" class="passive" axis="0 1 0"/>
+            <site name="right_upper_loop_b" pos="0.0181427 -3.40006e-16 0.0184003" size="0.002" group="4"/>
+            <site name="right_lower_loop_b" pos="0.0181427 1.80411e-16 -0.0395997" size="0.002" group="4"/>
+            <inertial pos="0.0173886 -1.45717e-16 -0.0105997" mass="0.00766893" fullinertia="4.65066e-06 2.51688e-06 3.39202e-06 -3.6802e-20 -8.54362e-21 -1.68882e-21"/>
+            <geom class="visual" mesh="right_knee_0" rgba="0.922 0.922 0.896 1"/>
+            <geom class="collision" mesh="col_right_knee_0"/>
+            <body name="right_shin" pos="-0.00014275 0 -0.0212282">
+              <joint name="right_knee_lower" class="passive" axis="0 1 0"/>
+              <inertial pos="-5.12936e-07 -0.00062298 -0.047995" mass="0.0682108" fullinertia="2.4037e-05 1.49411e-05 1.35047e-05 4.46043e-10 -2.695e-10 -1.95131e-07"/>
+              <geom class="visual" mesh="right_shin_0" rgba="0.85 0.85 0.85 1"/>
+              <geom class="visual" mesh="right_shin_1" rgba="0.922 0.922 0.896 1"/>
+              <geom class="collision" mesh="col_right_shin_0"/>
+              <geom class="collision" mesh="col_right_shin_1"/>
+              <geom class="collision" mesh="col_right_shin_2"/>
+              <body name="right_ankle" pos="-3.44343e-16 0.024 -0.0604412">
+                <joint name="right_knee_pitch" class="servo" axis="0 1 0"/>
+                <inertial pos="0.00569922 -0.0251189 -0.0291848" mass="0.0753392" fullinertia="2.41783e-05 1.90554e-05 2.54809e-05 1.15145e-08 1.18075e-06 -6.81596e-07"/>
+                <geom class="visual" mesh="right_ankle_0" rgba="0.85 0.85 0.85 1"/>
+                <geom class="visual" mesh="right_ankle_1" rgba="0.01 0.01 0.01 1"/>
+                <geom class="visual" mesh="right_ankle_2" rgba="0.913 0.913 0.922 1"/>
+                <geom class="visual" mesh="right_ankle_3" rgba="0.922 0.922 0.896 1"/>
+                <geom class="collision" mesh="col_right_ankle_0"/>
+                <geom class="collision" mesh="col_right_ankle_1"/>
+                <geom class="collision" mesh="col_right_ankle_2"/>
+                <geom class="collision" mesh="col_right_ankle_3"/>
+                <body name="right_foot" pos="-0.0185 -0.0149878 -0.0314878">
+                  <joint name="right_ankle_roll" class="servo" axis="1 0 0"/>
+                  <inertial pos="0.023998 -0.0145043 -0.0155019" mass="0.0194946" fullinertia="1.24621e-05 2.88267e-05 3.71119e-05 2.83078e-07 3.02791e-07 -1.80188e-06"/>
+                  <geom class="visual" mesh="right_foot_0" rgba="0.01 0.01 0.01 1"/>
+                  <geom class="visual" mesh="right_foot_1" rgba="0.913 0.913 0.922 1"/>
+                  <geom class="visual" mesh="right_foot_2" rgba="0.922 0.922 0.896 1"/>
+                  <geom class="collision" mesh="col_right_foot_0"/>
+                  <geom class="collision" mesh="col_right_foot_1"/>
+                  <geom class="collision" mesh="col_right_foot_2"/>
+                </body>
+                <body name="right_shin_shell" pos="0.0181427 -0.025 -0.0179591">
+                  <joint name="right_shin_shell" class="passive" axis="0 1 0"/>
+                  <site name="right_lower_loop_a" pos="0.00014275 0.001 0.0600287" size="0.002" group="4"/>
+                  <inertial pos="0.00494242 0.001 0.0300287" mass="0.00537234" fullinertia="3.31417e-06 1.3252e-06 2.21801e-06 -5.21475e-20 -9.90955e-21 -1.16142e-21"/>
+                  <geom class="visual" mesh="right_shin_shell_0" rgba="0.922 0.922 0.896 1"/>
+                  <geom class="collision" mesh="col_right_shin_shell_0"/>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+        <body name="right_thigh_shell" pos="0.0364375 -0.01 -0.0134375">
+          <joint name="right_thigh_shell" class="passive" axis="0 1 0"/>
+          <site name="right_upper_loop_a" pos="6.25e-05 0 -0.0600625" size="0.002" group="4"/>
+          <inertial pos="0.00486217 1.38778e-17 -0.0300625" mass="0.00537234" fullinertia="3.31417e-06 1.3252e-06 2.21801e-06 -9.83162e-21 -7.18497e-21 7.25777e-22"/>
+          <geom class="visual" mesh="right_thigh_shell_0" rgba="0.922 0.922 0.896 1"/>
+          <geom class="collision" mesh="col_right_thigh_shell_0"/>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <contact>
+    <exclude body1="left_ankle" body2="left_hip"/>
+    <exclude body1="left_ankle" body2="left_knee"/>
+    <exclude body1="left_ankle" body2="left_shin"/>
+    <exclude body1="left_ankle" body2="left_shin_shell"/>
+    <exclude body1="left_ankle" body2="left_thigh"/>
+    <exclude body1="left_ankle" body2="left_thigh_shell"/>
+    <exclude body1="left_hip" body2="left_knee"/>
+    <exclude body1="left_hip" body2="left_shin"/>
+    <exclude body1="left_hip" body2="left_shin_shell"/>
+    <exclude body1="left_hip" body2="left_thigh"/>
+    <exclude body1="left_hip" body2="left_thigh_shell"/>
+    <exclude body1="left_knee" body2="left_shin"/>
+    <exclude body1="left_knee" body2="left_shin_shell"/>
+    <exclude body1="left_knee" body2="left_thigh"/>
+    <exclude body1="left_knee" body2="left_thigh_shell"/>
+    <exclude body1="left_shin" body2="left_shin_shell"/>
+    <exclude body1="left_shin" body2="left_thigh"/>
+    <exclude body1="left_shin" body2="left_thigh_shell"/>
+    <exclude body1="left_shin_shell" body2="left_thigh"/>
+    <exclude body1="left_shin_shell" body2="left_thigh_shell"/>
+    <exclude body1="left_thigh" body2="left_thigh_shell"/>
+    <exclude body1="left_thigh_shell" body2="pelvis"/>
+    <exclude body1="pelvis" body2="right_thigh_shell"/>
+    <exclude body1="right_ankle" body2="right_hip"/>
+    <exclude body1="right_ankle" body2="right_knee"/>
+    <exclude body1="right_ankle" body2="right_shin"/>
+    <exclude body1="right_ankle" body2="right_shin_shell"/>
+    <exclude body1="right_ankle" body2="right_thigh"/>
+    <exclude body1="right_ankle" body2="right_thigh_shell"/>
+    <exclude body1="right_hip" body2="right_knee"/>
+    <exclude body1="right_hip" body2="right_shin"/>
+    <exclude body1="right_hip" body2="right_shin_shell"/>
+    <exclude body1="right_hip" body2="right_thigh"/>
+    <exclude body1="right_hip" body2="right_thigh_shell"/>
+    <exclude body1="right_knee" body2="right_shin"/>
+    <exclude body1="right_knee" body2="right_shin_shell"/>
+    <exclude body1="right_knee" body2="right_thigh"/>
+    <exclude body1="right_knee" body2="right_thigh_shell"/>
+    <exclude body1="right_shin" body2="right_shin_shell"/>
+    <exclude body1="right_shin" body2="right_thigh"/>
+    <exclude body1="right_shin" body2="right_thigh_shell"/>
+    <exclude body1="right_shin_shell" body2="right_thigh"/>
+    <exclude body1="right_shin_shell" body2="right_thigh_shell"/>
+    <exclude body1="right_thigh" body2="right_thigh_shell"/>
+  </contact>
+  <equality>
+    <joint joint1="left_thigh_shell" joint2="left_hip_pitch" polycoef="0 1 0 0 0" solref="0.004 1"/>
+    <joint joint1="right_thigh_shell" joint2="right_hip_pitch" polycoef="0 1 0 0 0" solref="0.004 1"/>
+    <joint joint1="left_knee_upper" joint2="left_hip_pitch" polycoef="0 -1 0 0 0" solref="0.004 1"/>
+    <joint joint1="right_knee_upper" joint2="right_hip_pitch" polycoef="0 -1 0 0 0" solref="0.004 1"/>
+    <joint joint1="left_knee_lower" joint2="left_knee_pitch" polycoef="0 -1 0 0 0" solref="0.004 1"/>
+    <joint joint1="right_knee_lower" joint2="right_knee_pitch" polycoef="0 -1 0 0 0" solref="0.004 1"/>
+    <joint joint1="left_shin_shell" joint2="left_knee_pitch" polycoef="0 -1 0 0 0" solref="0.004 1"/>
+    <joint joint1="right_shin_shell" joint2="right_knee_pitch" polycoef="0 -1 0 0 0" solref="0.004 1"/>
+  </equality>
+  <actuator>
+    <position name="waist_yaw" joint="waist_yaw" class="servo"/>
+    <position name="left_hip_roll" joint="left_hip_roll" class="servo"/>
+    <position name="right_hip_roll" joint="right_hip_roll" class="servo"/>
+    <position name="left_shoulder_pitch" joint="left_shoulder_pitch" class="servo"/>
+    <position name="right_shoulder_pitch" joint="right_shoulder_pitch" class="servo"/>
+    <position name="left_hip_pitch" joint="left_hip_pitch" class="servo"/>
+    <position name="right_hip_pitch" joint="right_hip_pitch" class="servo"/>
+    <position name="left_shoulder_roll" joint="left_shoulder_roll" class="servo"/>
+    <position name="right_shoulder_roll" joint="right_shoulder_roll" class="servo"/>
+    <position name="left_elbow" joint="left_elbow" class="servo"/>
+    <position name="right_elbow" joint="right_elbow" class="servo"/>
+    <position name="left_knee_pitch" joint="left_knee_pitch" class="servo"/>
+    <position name="right_knee_pitch" joint="right_knee_pitch" class="servo"/>
+    <position name="left_ankle_roll" joint="left_ankle_roll" class="servo"/>
+    <position name="right_ankle_roll" joint="right_ankle_roll" class="servo"/>
+  </actuator>
+  <keyframe>
+    <key name="home" qpos="0 0 0.231607 1 0 0 0 0 0 0 0 0 0 0 0 -0.5 0.5 0.5 -0.5 0 0.5 -0.5 0 -0.5 0.5 0.5 -0.5 0 0.5 -0.5"
+         ctrl="0 0 0 0 0 -0.5 -0.5 0 0 0 0 -0.5 -0.5 0 0"/>
+  </keyframe>
+</mujoco>

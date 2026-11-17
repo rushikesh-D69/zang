@@ -1,0 +1,20 @@
+menu "Zang camera (DVP)"
+    config ZANG_CAMERA_ENABLE
+        bool "Enable the DVP camera (OV2640 assumed, VERIFY the module)"
+        default y
+    config ZANG_CAMERA_XCLK_HZ
+        int "XCLK frequency (Hz) generated on CAM_XCLK"
+        depends on ZANG_CAMERA_ENABLE
+        default 20000000
+    config ZANG_CAMERA_SCCB_HZ
+        int "SCCB clock (Hz)"
+        depends on ZANG_CAMERA_ENABLE
+        default 100000
+    config ZANG_CAMERA_DEFAULT_QUALITY
+        int "Default JPEG quality (1..100, higher = better)"
+        depends on ZANG_CAMERA_ENABLE
+        range 1 100
+        default 60
+        help
+            The sensor compresses to JPEG itself (OV2640). CMD CAMERA_STREAM can change the quality per stream.
+endmenu

@@ -1,0 +1,56 @@
+menu "Zang display (SPI TFT)"
+    choice ZANG_LCD_PANEL
+        prompt "Panel controller"
+        default ZANG_LCD_GC9A01
+        help
+            The CAD chest plate has a 40 mm ROUND window (no display part in the CAD), which fits a 1.28" round
+            240x240 GC9A01 module; the 12-pin FPC pinout on the schematic matches those modules too. Change it here
+            if the real panel differs.
+        config ZANG_LCD_ST7789
+            bool "ST7789"
+        config ZANG_LCD_GC9A01
+            bool "GC9A01 (round 240x240)"
+        config ZANG_LCD_ILI9341
+            bool "ILI9341"
+    endchoice
+    config ZANG_LCD_WIDTH
+        int "Width (px)"
+        default 240
+    config ZANG_LCD_HEIGHT
+        int "Height (px)"
+        default 320 if ZANG_LCD_ILI9341
+        default 240
+    config ZANG_LCD_PCLK_MHZ
+        int "SPI clock (MHz): 40, 48, 60 or 80 divide cleanly from SPLL 480 MHz"
+        default 60 if ZANG_LCD_ST7789
+        default 40
+        help
+            ST7789 write cycle >= 16 ns -> 60 MHz is the highest in-spec clock (HARDWARE_REVIEW.md).
+    config ZANG_LCD_SPI_MODE
+        int "SPI mode"
+        range 0 3
+        default 0
+    config ZANG_LCD_INVERT_COLOR
+        bool "Invert colours (most IPS ST7789 / GC9A01 modules need this)"
+        default y if ZANG_LCD_ST7789 || ZANG_LCD_GC9A01
+        default n
+    config ZANG_LCD_BGR
+        bool "Panel is BGR"
+        default y if ZANG_LCD_ILI9341 || ZANG_LCD_GC9A01
+        default n
+    config ZANG_LCD_X_GAP
+        int "X offset into controller RAM"
+        default 0
+    config ZANG_LCD_Y_GAP
+        int "Y offset into controller RAM"
+        default 0
+    config ZANG_LCD_LINES_PER_BUF
+        int "Lines per DMA buffer (two buffers in internal RAM)"
+        default 20
+    config ZANG_LCD_FPS
+        int "Animation frame rate target"
+        default 30
+    config ZANG_LCD_SELF_TEST
+        bool "Measure and log full-frame and partial-update FPS at boot"
+        default y
+endmenu

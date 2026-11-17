@@ -1,0 +1,32 @@
+menu "Zang servo bus"
+    config ZANG_SERVO_UART_PORT
+        int "UART controller for the servo bus"
+        range 1 4
+        default 1
+    config ZANG_SERVO_BAUD
+        int "Servo bus baud rate"
+        default 115200
+        help
+            Zing ran DS servos at 115200. At that rate one goal packet (11 B) takes ~0.95 ms, so 15 servos need
+            ~14 ms per cycle with per-servo writes. Raise only after confirming the DS-R003G supports it.
+    config ZANG_SERVO_TX_OPEN_DRAIN
+        bool "Drive the TX pin open-drain"
+        default y
+        help
+            v0.0.1 rework: SS_P is wired straight to GPIO47 and the bus is pulled up by 1k on the board, and SS_N
+            to GPIO48. Open-drain TX lets servos and the P4 share the line without fighting.
+    config ZANG_SERVO_SINGLE_WIRE_ECHO
+        bool "Single-wire bus: every transmitted byte is echoed back on RX"
+        default y
+        help
+            True for a TX/RX tied single wire (Zing's wiring). Disable when SERVO_DIR drives a buffer that
+            isolates RX during transmit.
+    config ZANG_SERVO_SYNC_WRITE
+        bool "Use SYNC WRITE (0x83) for multi-servo goals (UNVERIFIED on DS-R003G)"
+        default n
+        help
+            One 83-byte packet for all 15 servos instead of 15 x 11 bytes. Enable only after a bench test.
+    config ZANG_SERVO_REPLY_TIMEOUT_MS
+        int "Reply timeout (ms)"
+        default 10
+endmenu

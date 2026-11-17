@@ -1,0 +1,28 @@
+{
+  "_doc": "Co-speech motion and safety settings for Zang. Angles in degrees here (human-edited); code converts to radians. Everything marked placeholder must be re-measured on the robot.",
+  "fps": 50,
+  "cospeech_envelope_deg": {
+    "_doc": "Range the co-speech planner may use, in ANATOMICAL degrees (arm: pitch + = forward/up, roll + = outward, elbow + = flexed toward the midline; gaze + = turn to robot's left). Tighter than the joint limits on purpose.",
+    "arm_pitch": [-20, 160],
+    "arm_roll": [-5, 90],
+    "elbow": [0, 100],
+    "gaze": [-15, 15]
+  },
+  "gaze": {"_doc": "Zang has no head: gaze turns the waist. Zing head-pan degrees are multiplied by gain.", "gain": 0.4},
+  "sway": {"_doc": "Weight shift: hip_roll and ankle_roll counter-rotate (feet stay flat). deg at sway = 1.", "deg": 2.0},
+  "leg_cospeech": {"_doc": "Leg joints during co-speech: small, slow (feet planted).", "limit_deg": 4.0, "vmax_dps": 15.0, "amax_dps2": 150.0},
+  "collision": {"clearance_mm": 4.0, "projection_headroom_mm": 3.0, "_doc": "Arm geoms must stay clearance_mm from every other body (MuJoCo collision meshes). Projection aims for clearance + headroom so servo lag/overshoot (seen in the physics twin) cannot reach the body."},
+  "balance": {"min_margin_mm": 8.0, "_doc": "Static CoM must project inside the feet polygon by this margin, else the motion is shrunk toward home."},
+  "servo_model": {
+    "_doc": "PLACEHOLDER (DS-R003G not identified yet). Used by the physics twin on top of the MJCF position actuators: command latency, internal speed limit of the servo.",
+    "latency_ms": 5.0,
+    "vmax_dps": 300.0
+  },
+  "physics_checks": {
+    "max_tilt_deg": 8.0,
+    "min_zmp_margin_mm": 3.0,
+    "max_slip_mm": 3.0,
+    "max_torque_pct": 85.0,
+    "max_tracking_rms_deg": 6.0
+  }
+}

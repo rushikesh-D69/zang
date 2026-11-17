@@ -1,0 +1,1941 @@
+{
+ "_doc": "Zang's movement vocabulary (ported from ZingAIStack config/gestures.json; Zing library-clip variants removed because Zang has no recorded action library yet: dropped gestures = salute, dab). Arm poses are [shoulder pitch, shoulder roll, elbow] in anatomical degrees (pitch+ forward/up, roll+ outward, elbow+ folds inward; co-speech limits pitch -15..170, roll -8..100, elbow 0..109, head pan +-30). Each gesture has trigger words (EN + Hinglish), hf = Hugging Face gesture classes mapped to it, and a list of visually different VARIANTS; the planner picks one per use and never repeats the last one, so <think> is think1, think2, think3... in turn (the LLM can also force one: <think2>). Variant fields: arms r|l|both|either (either = whichever hand is free, head mirrors), pose (pose_l for an asymmetric two-hand pose), hold s, prep s, head pan deg, head_osc [[dt, deg],...] pan pulses, osc {joint, values, period, cycles} = oscillate one joint, path {poses, period} = move through extra poses, sway [..] = weight-shift pulses (-1..1), action = replay a Plode library action, min_arousal (+ fallback gesture). Poses are collision-projected against the URDF meshes at runtime; tests/test_core.py checks that all variants stay visually distinct. Rhymes, songs and stories use the specific gestures (down, away, rain, sun, round, fly, sleep, clap, run, music): the LLM writes the tag, the engine picks the variant. ZANG MAPPING: arm poses are retargeted to Zang joints by zang_ai.robot (anatomical signs derived from the MJCF at load). Zang has NO head: 'head'/'head_osc' degrees drive a gaze turn of the waist (waist_yaw) scaled by config/motion.json gaze.gain and clamped to its co-speech range. 'sway' drives hip_roll/ankle_roll weight shift like Zing.",
+ "gestures": {
+  "wave": {
+   "means": "greeting / goodbye",
+   "words": "hi hello hey hii namaskar bye goodbye welcome",
+   "hf": [
+    "GREET"
+   ],
+   "variants": [
+    {
+     "id": "high",
+     "arms": "either",
+     "pose": [
+      150,
+      12,
+      40
+     ],
+     "prep": 0.75,
+     "osc": {
+      "joint": "elbow",
+      "values": [
+       85,
+       45
+      ],
+      "period": 0.3,
+      "cycles": 4
+     }
+    },
+    {
+     "id": "side",
+     "arms": "either",
+     "pose": [
+      70,
+      55,
+      60
+     ],
+     "prep": 0.6,
+     "osc": {
+      "joint": "roll",
+      "values": [
+       30,
+       65
+      ],
+      "period": 0.32,
+      "cycles": 4
+     },
+     "head": 6
+    },
+    {
+     "id": "both",
+     "arms": "both",
+     "pose": [
+      145,
+      25,
+      40
+     ],
+     "prep": 0.75,
+     "osc": {
+      "joint": "elbow",
+      "values": [
+       80,
+       40
+      ],
+      "period": 0.32,
+      "cycles": 3
+     },
+     "sway": [
+      0.6,
+      -0.6
+     ]
+    }
+   ]
+  },
+  "namaste": {
+   "means": "respectful Indian greeting",
+   "words": "namaste namaskaram pranam",
+   "hf": [],
+   "variants": [
+    {
+     "id": "chest",
+     "arms": "both",
+     "pose": [
+      69,
+      0,
+      109
+     ],
+     "hold": 0.8,
+     "prep": 0.5,
+     "head_osc": [
+      [
+       0.25,
+       5
+      ]
+     ]
+    }
+   ]
+  },
+  "self": {
+   "means": "talking about yourself",
+   "words": "i i'm im me my mine myself main mera meri mujhe hum",
+   "hf": [
+    "SELF"
+   ],
+   "variants": [
+    {
+     "id": "chest",
+     "arms": "either",
+     "pose": [
+      55,
+      4,
+      90
+     ],
+     "hold": 0.45
+    },
+    {
+     "id": "thumb",
+     "arms": "either",
+     "pose": [
+      15,
+      25,
+      105
+     ],
+     "hold": 0.4,
+     "head": 5
+    },
+    {
+     "id": "both",
+     "arms": "both",
+     "pose": [
+      60,
+      12,
+      85
+     ],
+     "hold": 0.45,
+     "head_osc": [
+      [
+       0.2,
+       4
+      ]
+     ]
+    }
+   ]
+  },
+  "thanks": {
+   "means": "thanking",
+   "words": "thanks thank thankyou shukriya dhanyavaad",
+   "hf": [
+    "THANKS"
+   ],
+   "variants": [
+    {
+     "id": "both_open",
+     "arms": "both",
+     "pose": [
+      50,
+      30,
+      15
+     ],
+     "hold": 0.5,
+     "head_osc": [
+      [
+       0.15,
+       5
+      ],
+      [
+       0.45,
+       3
+      ]
+     ]
+    },
+    {
+     "id": "raise",
+     "arms": "either",
+     "pose": [
+      100,
+      40,
+      40
+     ],
+     "hold": 0.5,
+     "head_osc": [
+      [
+       0.2,
+       6
+      ]
+     ]
+    }
+   ]
+  },
+  "sorry": {
+   "means": "apologising",
+   "words": "sorry oops apologies maaf",
+   "hf": [
+    "SORRY"
+   ],
+   "variants": [
+    {
+     "id": "palms_low",
+     "arms": "both",
+     "pose": [
+      25,
+      30,
+      40
+     ],
+     "hold": 0.7,
+     "head": -12,
+     "prep": 0.6
+    },
+    {
+     "id": "neck_rub",
+     "arms": "either",
+     "pose": [
+      140,
+      60,
+      109
+     ],
+     "hold": 0.2,
+     "head": -12,
+     "osc": {
+      "joint": "roll",
+      "values": [
+       50,
+       65
+      ],
+      "period": 0.3,
+      "cycles": 3
+     }
+    }
+   ]
+  },
+  "point": {
+   "means": "'you', the listener",
+   "words": "you your you're yours aap tum tumhara aapka",
+   "hf": [
+    "OTHER_PEER",
+    "THIRD_PERSON",
+    "FRONT"
+   ],
+   "variants": [
+    {
+     "id": "forward",
+     "arms": "either",
+     "pose": [
+      70,
+      6,
+      15
+     ],
+     "hold": 0.45
+    },
+    {
+     "id": "both",
+     "arms": "both",
+     "pose": [
+      60,
+      12,
+      15
+     ],
+     "hold": 0.45
+    },
+    {
+     "id": "offer",
+     "arms": "either",
+     "pose": [
+      40,
+      40,
+      0
+     ],
+     "hold": 0.55,
+     "head": 5
+    }
+   ]
+  },
+  "there": {
+   "means": "something over there",
+   "words": "there over",
+   "hf": [],
+   "variants": [
+    {
+     "id": "side",
+     "arms": "either",
+     "pose": [
+      75,
+      70,
+      0
+     ],
+     "hold": 0.55,
+     "head": -14
+    },
+    {
+     "id": "far",
+     "arms": "either",
+     "pose": [
+      110,
+      45,
+      0
+     ],
+     "hold": 0.5,
+     "head": -10
+    }
+   ]
+  },
+  "up": {
+   "means": "sky, space, above",
+   "words": "sky above stars space moon",
+   "hf": [],
+   "variants": [
+    {
+     "id": "point_up",
+     "arms": "either",
+     "pose": [
+      168,
+      8,
+      0
+     ],
+     "hold": 0.55,
+     "head": 4
+    },
+    {
+     "id": "shade_eyes",
+     "arms": "either",
+     "pose": [
+      125,
+      -8,
+      109
+     ],
+     "hold": 0.7,
+     "head": 12
+    }
+   ]
+  },
+  "come": {
+   "means": "inviting, let's go",
+   "words": "come join let's lets chalo aao",
+   "hf": [
+    "COME_ON"
+   ],
+   "variants": [
+    {
+     "id": "beckon",
+     "arms": "either",
+     "pose": [
+      60,
+      10,
+      40
+     ],
+     "prep": 0.45,
+     "osc": {
+      "joint": "elbow",
+      "values": [
+       100,
+       40
+      ],
+      "period": 0.28,
+      "cycles": 4
+     }
+    },
+    {
+     "id": "scoop",
+     "arms": "both",
+     "pose": [
+      45,
+      35,
+      20
+     ],
+     "prep": 0.4,
+     "path": {
+      "poses": [
+       [
+        55,
+        10,
+        90
+       ],
+       [
+        45,
+        35,
+        20
+       ],
+       [
+        55,
+        10,
+        90
+       ]
+      ],
+      "period": 0.35
+     }
+    }
+   ]
+  },
+  "open": {
+   "means": "everyone, all, welcoming",
+   "words": "everyone everybody all everything whole world together sab sabhi",
+   "hf": [
+    "PLEASE"
+   ],
+   "variants": [
+    {
+     "id": "spread",
+     "arms": "both",
+     "pose": [
+      40,
+      45,
+      25
+     ],
+     "hold": 0.5
+    },
+    {
+     "id": "high",
+     "arms": "both",
+     "pose": [
+      85,
+      60,
+      10
+     ],
+     "hold": 0.45
+    },
+    {
+     "id": "sweep",
+     "arms": "both",
+     "pose": [
+      50,
+      5,
+      60
+     ],
+     "hold": 0.3,
+     "path": {
+      "poses": [
+       [
+        35,
+        65,
+        10
+       ]
+      ],
+      "period": 0.55
+     }
+    }
+   ]
+  },
+  "explain": {
+   "means": "explaining how/why",
+   "words": "because means basically actually matlab kyunki",
+   "hf": [
+    "EXPLAIN"
+   ],
+   "variants": [
+    {
+     "id": "roll",
+     "arms": "both",
+     "pose": [
+      45,
+      12,
+      70
+     ],
+     "prep": 0.4,
+     "path": {
+      "poses": [
+       [
+        55,
+        15,
+        50
+       ],
+       [
+        45,
+        12,
+        75
+       ],
+       [
+        55,
+        15,
+        50
+       ]
+      ],
+      "period": 0.28
+     }
+    },
+    {
+     "id": "frame",
+     "arms": "both",
+     "pose": [
+      50,
+      35,
+      90
+     ],
+     "hold": 0.6
+    },
+    {
+     "id": "present",
+     "arms": "either",
+     "pose": [
+      40,
+      40,
+      30
+     ],
+     "hold": 0.2,
+     "path": {
+      "poses": [
+       [
+        50,
+        15,
+        70
+       ],
+       [
+        40,
+        45,
+        25
+       ]
+      ],
+      "period": 0.35
+     }
+    }
+   ]
+  },
+  "count": {
+   "means": "listing steps: first, second",
+   "words": "first second third steps pehla",
+   "hf": [
+    "ITERATE"
+   ],
+   "variants": [
+    {
+     "id": "ticks",
+     "arms": "either",
+     "pose": [
+      60,
+      8,
+      80
+     ],
+     "hold": 0.15,
+     "path": {
+      "poses": [
+       [
+        60,
+        18,
+        70
+       ],
+       [
+        60,
+        28,
+        60
+       ]
+      ],
+      "period": 0.3
+     }
+    },
+    {
+     "id": "fingers",
+     "arms": "both",
+     "pose": [
+      85,
+      20,
+      85
+     ],
+     "pose_l": [
+      50,
+      10,
+      95
+     ],
+     "hold": 0.6
+    }
+   ]
+  },
+  "big": {
+   "means": "something big",
+   "words": "big huge giant enormous massive bada",
+   "hf": [],
+   "variants": [
+    {
+     "id": "wide",
+     "arms": "both",
+     "pose": [
+      70,
+      85,
+      0
+     ],
+     "hold": 0.6,
+     "prep": 0.5
+    },
+    {
+     "id": "grow",
+     "arms": "both",
+     "pose": [
+      50,
+      15,
+      50
+     ],
+     "hold": 0.2,
+     "path": {
+      "poses": [
+       [
+        80,
+        75,
+        0
+       ]
+      ],
+      "period": 0.6
+     }
+    }
+   ]
+  },
+  "small": {
+   "means": "something tiny",
+   "words": "small tiny little bit chhota thoda",
+   "hf": [],
+   "variants": [
+    {
+     "id": "low_hand",
+     "arms": "either",
+     "pose": [
+      25,
+      0,
+      0
+     ],
+     "hold": 0.6,
+     "head": 8
+    },
+    {
+     "id": "hands_close",
+     "arms": "both",
+     "pose": [
+      55,
+      -8,
+      50
+     ],
+     "hold": 0.55
+    }
+   ]
+  },
+  "think": {
+   "means": "thinking, unsure, hmm",
+   "words": "think thinking maybe perhaps hmm wonder guess idea shayad socho",
+   "hf": [
+    "THINKING"
+   ],
+   "variants": [
+    {
+     "id": "chin",
+     "arms": "either",
+     "pose": [
+      75,
+      -8,
+      105
+     ],
+     "hold": 0.9,
+     "head": 12
+    },
+    {
+     "id": "scratch",
+     "arms": "either",
+     "pose": [
+      150,
+      35,
+      105
+     ],
+     "hold": 0.3,
+     "osc": {
+      "joint": "elbow",
+      "values": [
+       95,
+       108
+      ],
+      "period": 0.22,
+      "cycles": 4
+     },
+     "head": -8
+    },
+    {
+     "id": "supported",
+     "arms": "both",
+     "pose": [
+      65,
+      -6,
+      100
+     ],
+     "pose_l": [
+      35,
+      -8,
+      90
+     ],
+     "hold": 0.9,
+     "head": 15,
+     "head_osc": [
+      [
+       0.5,
+       -4
+      ]
+     ]
+    },
+    {
+     "id": "tap_temple",
+     "arms": "either",
+     "pose": [
+      120,
+      40,
+      108
+     ],
+     "hold": 0.2,
+     "path": {
+      "poses": [
+       [
+        110,
+        40,
+        95
+       ],
+       [
+        120,
+        40,
+        108
+       ]
+      ],
+      "period": 0.25
+     },
+     "head": 10
+    }
+   ]
+  },
+  "listen": {
+   "means": "listening, 'tell me'",
+   "words": "listen hear sound suno",
+   "hf": [],
+   "variants": [
+    {
+     "id": "ear",
+     "arms": "either",
+     "pose": [
+      95,
+      75,
+      109
+     ],
+     "hold": 0.8,
+     "head": -15
+    },
+    {
+     "id": "lean",
+     "arms": "both",
+     "pose": [
+      50,
+      20,
+      60
+     ],
+     "hold": 0.8,
+     "head": 18,
+     "sway": [
+      0.8
+     ]
+    }
+   ]
+  },
+  "stop": {
+   "means": "stop, wait, careful",
+   "words": "stop wait hold careful ruko",
+   "hf": [],
+   "variants": [
+    {
+     "id": "palm",
+     "arms": "either",
+     "pose": [
+      95,
+      8,
+      75
+     ],
+     "hold": 0.6,
+     "prep": 0.3
+    },
+    {
+     "id": "both_palms",
+     "arms": "both",
+     "pose": [
+      90,
+      15,
+      70
+     ],
+     "hold": 0.6,
+     "prep": 0.3
+    },
+    {
+     "id": "cross",
+     "arms": "both",
+     "pose": [
+      70,
+      -8,
+      80
+     ],
+     "hold": 0.5,
+     "head_osc": [
+      [
+       0.15,
+       8
+      ],
+      [
+       0.35,
+       -8
+      ]
+     ]
+    }
+   ]
+  },
+  "shrug": {
+   "means": "don't know",
+   "words": "dunno unsure whatever pata",
+   "hf": [
+    "BUT"
+   ],
+   "variants": [
+    {
+     "id": "classic",
+     "arms": "both",
+     "pose": [
+      28,
+      35,
+      95
+     ],
+     "hold": 0.45,
+     "head": -6
+    },
+    {
+     "id": "palms_up",
+     "arms": "both",
+     "pose": [
+      35,
+      55,
+      50
+     ],
+     "hold": 0.5,
+     "head": 8,
+     "sway": [
+      -0.5
+     ]
+    },
+    {
+     "id": "one_side",
+     "arms": "either",
+     "pose": [
+      30,
+      50,
+      90
+     ],
+     "hold": 0.45,
+     "head": -10
+    }
+   ]
+  },
+  "heart": {
+   "means": "love, friendship",
+   "words": "love favourite favorite heart pyaar dost friend",
+   "hf": [],
+   "variants": [
+    {
+     "id": "air_hug",
+     "arms": "both",
+     "pose": [
+      60,
+      60,
+      40
+     ],
+     "hold": 0.4,
+     "prep": 0.5,
+     "path": {
+      "poses": [
+       [
+        60,
+        15,
+        90
+       ]
+      ],
+      "period": 0.5
+     },
+     "sway": [
+      0.5,
+      -0.5,
+      0.4
+     ]
+    },
+    {
+     "id": "over_head",
+     "arms": "both",
+     "pose": [
+      145,
+      20,
+      105
+     ],
+     "hold": 0.6,
+     "prep": 0.7,
+     "head_osc": [
+      [
+       0.2,
+       7
+      ],
+      [
+       0.5,
+       -5
+      ]
+     ]
+    }
+   ]
+  },
+  "proud": {
+   "means": "pride, achievement",
+   "words": "proud won best champion",
+   "hf": [],
+   "variants": [
+    {
+     "id": "hips",
+     "arms": "both",
+     "pose": [
+      -10,
+      55,
+      100
+     ],
+     "hold": 0.8,
+     "sway": [
+      0.6
+     ]
+    },
+    {
+     "id": "chest_out",
+     "arms": "both",
+     "pose": [
+      -12,
+      45,
+      10
+     ],
+     "hold": 0.7,
+     "head_osc": [
+      [
+       0.2,
+       5
+      ],
+      [
+       0.45,
+       -5
+      ]
+     ]
+    }
+   ]
+  },
+  "shy": {
+   "means": "shy, blushing at a compliment",
+   "words": "shy blush hehe sharma",
+   "hf": [],
+   "variants": [
+    {
+     "id": "peek",
+     "arms": "either",
+     "pose": [
+      90,
+      0,
+      109
+     ],
+     "hold": 0.7,
+     "head": -20
+    },
+    {
+     "id": "twist",
+     "arms": "both",
+     "pose": [
+      10,
+      5,
+      20
+     ],
+     "hold": 0.6,
+     "head": 15,
+     "sway": [
+      0.7,
+      -0.7,
+      0.5
+     ]
+    },
+    {
+     "id": "behind",
+     "arms": "both",
+     "pose": [
+      -12,
+      15,
+      40
+     ],
+     "hold": 0.8,
+     "head": -15,
+     "sway": [
+      0.4,
+      -0.4,
+      0.4
+     ]
+    }
+   ]
+  },
+  "surprise": {
+   "means": "surprise, whoa",
+   "words": "whoa wow really omg arre",
+   "hf": [],
+   "variants": [
+    {
+     "id": "hands_up",
+     "arms": "both",
+     "pose": [
+      110,
+      35,
+      85
+     ],
+     "hold": 0.5,
+     "prep": 0.22
+    },
+    {
+     "id": "jolt",
+     "arms": "both",
+     "pose": [
+      20,
+      70,
+      0
+     ],
+     "hold": 0.4,
+     "prep": 0.2,
+     "head_osc": [
+      [
+       0.0,
+       -8
+      ]
+     ]
+    },
+    {
+     "id": "fling_up",
+     "arms": "both",
+     "pose": [
+      135,
+      65,
+      70
+     ],
+     "hold": 0.5,
+     "prep": 0.3
+    }
+   ]
+  },
+  "laugh": {
+   "means": "laughing at something funny",
+   "words": "haha lol funny joke hahaha",
+   "hf": [],
+   "variants": [
+    {
+     "id": "belly",
+     "arms": "both",
+     "pose": [
+      25,
+      0,
+      85
+     ],
+     "prep": 0.35,
+     "osc": {
+      "joint": "pitch",
+      "values": [
+       32,
+       22
+      ],
+      "period": 0.18,
+      "cycles": 4
+     },
+     "head_osc": [
+      [
+       0.1,
+       5
+      ],
+      [
+       0.3,
+       -4
+      ],
+      [
+       0.5,
+       4
+      ]
+     ]
+    },
+    {
+     "id": "rock",
+     "arms": "both",
+     "pose": [
+      10,
+      30,
+      20
+     ],
+     "hold": 0.6,
+     "sway": [
+      -0.6,
+      0.6,
+      -0.6
+     ],
+     "head_osc": [
+      [
+       0.1,
+       6
+      ],
+      [
+       0.5,
+       -6
+      ]
+     ]
+    },
+    {
+     "id": "throwback",
+     "arms": "both",
+     "pose": [
+      20,
+      40,
+      60
+     ],
+     "hold": 0.6,
+     "head_osc": [
+      [
+       0.0,
+       10
+      ],
+      [
+       0.35,
+       -6
+      ]
+     ],
+     "sway": [
+      -0.5,
+      0.5
+     ]
+    }
+   ]
+  },
+  "excited": {
+   "means": "excitement",
+   "words": "excited yay yippee woohoo",
+   "hf": [],
+   "variants": [
+    {
+     "id": "fists",
+     "arms": "both",
+     "pose": [
+      45,
+      15,
+      100
+     ],
+     "prep": 0.35,
+     "osc": {
+      "joint": "pitch",
+      "values": [
+       60,
+       35
+      ],
+      "period": 0.2,
+      "cycles": 4
+     },
+     "sway": [
+      0.5,
+      -0.5
+     ]
+    },
+    {
+     "id": "pump",
+     "arms": "either",
+     "pose": [
+      110,
+      15,
+      100
+     ],
+     "prep": 0.3,
+     "osc": {
+      "joint": "pitch",
+      "values": [
+       150,
+       110
+      ],
+      "period": 0.26,
+      "cycles": 3
+     }
+    },
+    {
+     "id": "jazz_hands",
+     "arms": "both",
+     "pose": [
+      60,
+      50,
+      40
+     ],
+     "prep": 0.3,
+     "osc": {
+      "joint": "roll",
+      "values": [
+       70,
+       35
+      ],
+      "period": 0.18,
+      "cycles": 4
+     },
+     "sway": [
+      0.4,
+      -0.4
+     ]
+    }
+   ]
+  },
+  "celebrate": {
+   "means": "big success, cheering",
+   "words": "amazing awesome great fantastic hurray congratulations super badhiya shabaash",
+   "hf": [
+    "ENTHUSIASTIC"
+   ],
+   "min_arousal": 0.55,
+   "fallback": "open",
+   "variants": [
+    {
+     "id": "hands_high",
+     "arms": "both",
+     "pose": [
+      140,
+      30,
+      30
+     ],
+     "hold": 0.5
+    },
+    {
+     "id": "v",
+     "arms": "both",
+     "pose": [
+      135,
+      75,
+      0
+     ],
+     "hold": 0.5,
+     "prep": 0.6,
+     "sway": [
+      0.5,
+      -0.5
+     ]
+    },
+    {
+     "id": "alternate",
+     "arms": "both",
+     "pose": [
+      140,
+      25,
+      60
+     ],
+     "prep": 0.35,
+     "osc": {
+      "joint": "elbow",
+      "values": [
+       20,
+       80
+      ],
+      "period": 0.24,
+      "cycles": 4
+     }
+    }
+   ]
+  },
+  "sad": {
+   "means": "sadness, sympathy",
+   "words": "sad unhappy cry miss lonely dukhi",
+   "hf": [],
+   "variants": [
+    {
+     "id": "droop",
+     "arms": "both",
+     "pose": [
+      15,
+      -8,
+      30
+     ],
+     "hold": 1.0,
+     "prep": 0.8,
+     "head": -16
+    },
+    {
+     "id": "head_in_hands",
+     "arms": "both",
+     "pose": [
+      100,
+      0,
+      109
+     ],
+     "hold": 0.9,
+     "prep": 0.8,
+     "head": -10
+    }
+   ]
+  },
+  "calm": {
+   "means": "calm down, relax",
+   "words": "relax calm easy breathe slowly",
+   "hf": [
+    "CALM_DOWN"
+   ],
+   "variants": [
+    {
+     "id": "press",
+     "arms": "both",
+     "pose": [
+      45,
+      14,
+      20
+     ],
+     "hold": 0.2,
+     "prep": 0.5,
+     "path": {
+      "poses": [
+       [
+        28,
+        14,
+        15
+       ]
+      ],
+      "period": 0.7
+     }
+    }
+   ]
+  },
+  "down": {
+   "means": "earth, ground, floor, below, down there",
+   "words": "earth ground floor soil underground",
+   "hf": [],
+   "variants": [
+    {
+     "id": "point_down",
+     "arms": "either",
+     "pose": [
+      28,
+      12,
+      55
+     ],
+     "hold": 0.55,
+     "head": -18
+    },
+    {
+     "id": "press_down",
+     "arms": "both",
+     "pose": [
+      30,
+      25,
+      75
+     ],
+     "hold": 0.3,
+     "path": {
+      "poses": [
+       [
+        12,
+        25,
+        45
+       ]
+      ],
+      "period": 0.4
+     },
+     "head": -14
+    }
+   ]
+  },
+  "away": {
+   "means": "go away, shoo, leave, push away",
+   "words": "shoo",
+   "hf": [],
+   "variants": [
+    {
+     "id": "shoo",
+     "arms": "either",
+     "pose": [
+      35,
+      15,
+      15
+     ],
+     "hold": 0.2,
+     "osc": {
+      "joint": "roll",
+      "values": [
+       15,
+       75,
+       15
+      ],
+      "period": 0.22,
+      "cycles": 2
+     }
+    },
+    {
+     "id": "push_away",
+     "arms": "both",
+     "pose": [
+      30,
+      20,
+      70
+     ],
+     "hold": 0.3,
+     "path": {
+      "poses": [
+       [
+        85,
+        25,
+        0
+       ]
+      ],
+      "period": 0.35
+     }
+    }
+   ]
+  },
+  "rain": {
+   "means": "rain, drops, snow, anything falling",
+   "words": "rain raindrop raindrops drizzle snow",
+   "hf": [],
+   "variants": [
+    {
+     "id": "drizzle",
+     "arms": "both",
+     "pose": [
+      125,
+      40,
+      60
+     ],
+     "hold": 0.2,
+     "path": {
+      "poses": [
+       [
+        85,
+        40,
+        40
+       ],
+       [
+        45,
+        40,
+        25
+       ]
+      ],
+      "period": 0.35
+     }
+    },
+    {
+     "id": "drops",
+     "arms": "either",
+     "pose": [
+      135,
+      45,
+      25
+     ],
+     "hold": 0.2,
+     "osc": {
+      "joint": "elbow",
+      "values": [
+       45,
+       10,
+       45
+      ],
+      "period": 0.2,
+      "cycles": 3
+     }
+    }
+   ]
+  },
+  "sun": {
+   "means": "sun, sunshine, bright light, warm",
+   "words": "sun sunshine sunny sunrise",
+   "hf": [],
+   "variants": [
+    {
+     "id": "rays",
+     "arms": "both",
+     "pose": [
+      150,
+      70,
+      0
+     ],
+     "hold": 0.5
+    },
+    {
+     "id": "glow",
+     "arms": "both",
+     "pose": [
+      150,
+      15,
+      45
+     ],
+     "hold": 0.3,
+     "path": {
+      "poses": [
+       [
+        150,
+        65,
+        0
+       ]
+      ],
+      "period": 0.5
+     }
+    }
+   ]
+  },
+  "round": {
+   "means": "round and round, wheels, spinning, turning",
+   "words": "wheels wheel spin spinning",
+   "hf": [],
+   "variants": [
+    {
+     "id": "roll_hands",
+     "arms": "both",
+     "pose": [
+      70,
+      20,
+      70
+     ],
+     "hold": 0.2,
+     "osc": {
+      "joint": "pitch",
+      "values": [
+       105,
+       50,
+       105
+      ],
+      "period": 0.4,
+      "cycles": 2
+     }
+    },
+    {
+     "id": "swirl",
+     "arms": "either",
+     "pose": [
+      120,
+      30,
+      70
+     ],
+     "hold": 0.2,
+     "osc": {
+      "joint": "roll",
+      "values": [
+       60,
+       0,
+       60
+      ],
+      "period": 0.35,
+      "cycles": 3
+     }
+    }
+   ]
+  },
+  "fly": {
+   "means": "flying: birds, planes, butterflies",
+   "words": "fly flying bird birds butterfly airplane",
+   "hf": [],
+   "variants": [
+    {
+     "id": "flap",
+     "arms": "both",
+     "pose": [
+      45,
+      100,
+      0
+     ],
+     "hold": 0.1,
+     "osc": {
+      "joint": "roll",
+      "values": [
+       100,
+       65,
+       100
+      ],
+      "period": 0.3,
+      "cycles": 3
+     }
+    },
+    {
+     "id": "soar",
+     "arms": "both",
+     "pose": [
+      110,
+      100,
+      0
+     ],
+     "hold": 0.6,
+     "sway": [
+      0.4,
+      -0.4
+     ]
+    }
+   ]
+  },
+  "sleep": {
+   "means": "sleeping, tired, bedtime, dreams",
+   "words": "sleep sleepy bed dream yawn bedtime",
+   "hf": [],
+   "variants": [
+    {
+     "id": "stretch_yawn",
+     "arms": "both",
+     "pose": [
+      170,
+      35,
+      15
+     ],
+     "hold": 0.6
+    },
+    {
+     "id": "nod_off",
+     "arms": "both",
+     "pose": [
+      8,
+      8,
+      10
+     ],
+     "hold": 0.8,
+     "head": -14,
+     "head_osc": [
+      [
+       0.2,
+       -10
+      ],
+      [
+       0.8,
+       -2
+      ]
+     ],
+     "sway": [
+      -0.5
+     ]
+    }
+   ]
+  },
+  "clap": {
+   "means": "clapping, applause",
+   "words": "clap clapping applause",
+   "hf": [],
+   "variants": [
+    {
+     "id": "clap_chest",
+     "arms": "both",
+     "pose": [
+      78,
+      8,
+      55
+     ],
+     "hold": 0.1,
+     "osc": {
+      "joint": "elbow",
+      "values": [
+       55,
+       100,
+       55
+      ],
+      "period": 0.3,
+      "cycles": 3
+     }
+    },
+    {
+     "id": "clap_high",
+     "arms": "both",
+     "pose": [
+      105,
+      8,
+      80
+     ],
+     "hold": 0.1,
+     "osc": {
+      "joint": "elbow",
+      "values": [
+       80,
+       105,
+       80
+      ],
+      "period": 0.3,
+      "cycles": 3
+     }
+    }
+   ]
+  },
+  "run": {
+   "means": "running, walking, jumping, hopping",
+   "words": "run running jump jumping hop hopping",
+   "hf": [],
+   "variants": [
+    {
+     "id": "pump_arms",
+     "arms": "both",
+     "pose": [
+      55,
+      10,
+      85
+     ],
+     "hold": 0.1,
+     "osc": {
+      "joint": "pitch",
+      "values": [
+       20,
+       70,
+       20
+      ],
+      "period": 0.3,
+      "cycles": 3
+     }
+    },
+    {
+     "id": "jog",
+     "arms": "either",
+     "pose": [
+      40,
+      12,
+      90
+     ],
+     "hold": 0.1,
+     "osc": {
+      "joint": "pitch",
+      "values": [
+       15,
+       65,
+       15
+      ],
+      "period": 0.28,
+      "cycles": 3
+     }
+    }
+   ]
+  },
+  "music": {
+   "means": "singing, music, a song, dancing",
+   "words": "sing singing song songs music dance dancing",
+   "hf": [],
+   "variants": [
+    {
+     "id": "sway_arms",
+     "arms": "both",
+     "pose": [
+      25,
+      75,
+      45
+     ],
+     "hold": 0.4,
+     "sway": [
+      0.5,
+      -0.5,
+      0.5
+     ],
+     "head_osc": [
+      [
+       0.2,
+       6
+      ],
+      [
+       0.6,
+       -6
+      ]
+     ]
+    },
+    {
+     "id": "disco",
+     "arms": "both",
+     "pose": [
+      140,
+      35,
+      40
+     ],
+     "pose_l": [
+      25,
+      35,
+      40
+     ],
+     "hold": 0.5,
+     "sway": [
+      0.5,
+      -0.5,
+      0.5
+     ]
+    }
+   ]
+  },
+  "bow": {
+   "means": "thank-you bow",
+   "words": "bow",
+   "hf": [],
+   "variants": [
+    {
+     "id": "courtesy",
+     "arms": "both",
+     "pose": [
+      45,
+      -8,
+      95
+     ],
+     "pose_l": [
+      -15,
+      15,
+      40
+     ],
+     "hold": 0.7,
+     "prep": 0.6,
+     "head_osc": [
+      [
+       0.2,
+       -9
+      ],
+      [
+       0.7,
+       -6
+      ]
+     ]
+    },
+    {
+     "id": "head_dip",
+     "head_osc": [
+      [
+       0.0,
+       -10
+      ],
+      [
+       0.45,
+       -7
+      ]
+     ]
+    }
+   ]
+  },
+  "flex": {
+   "means": "strength",
+   "words": "strong strength muscles power",
+   "hf": [],
+   "variants": [
+    {
+     "id": "double_bicep",
+     "arms": "both",
+     "pose": [
+      90,
+      80,
+      100
+     ],
+     "hold": 0.7,
+     "head_osc": [
+      [
+       0.3,
+       8
+      ],
+      [
+       0.6,
+       -8
+      ]
+     ]
+    }
+   ]
+  },
+  "no": {
+   "means": "no (head shake)",
+   "head_only": true,
+   "words": "no not never nope don't can't won't nahi nahin mat",
+   "hf": [
+    "NO"
+   ],
+   "variants": [
+    {
+     "id": "shake",
+     "head_osc": [
+      [
+       0.0,
+       14
+      ],
+      [
+       0.16,
+       -14
+      ],
+      [
+       0.32,
+       12
+      ],
+      [
+       0.48,
+       -8
+      ]
+     ]
+    },
+    {
+     "id": "slow",
+     "head_osc": [
+      [
+       0.0,
+       10
+      ],
+      [
+       0.3,
+       -10
+      ]
+     ]
+    }
+   ]
+  },
+  "yes": {
+   "means": "yes (head)",
+   "head_only": true,
+   "words": "yes yeah yep sure okay ok right haan ha ji bilkul",
+   "hf": [
+    "YES"
+   ],
+   "variants": [
+    {
+     "id": "nod",
+     "head_osc": [
+      [
+       0.0,
+       4
+      ],
+      [
+       0.3,
+       3
+      ]
+     ]
+    },
+    {
+     "id": "tilt",
+     "head_osc": [
+      [
+       0.0,
+       7
+      ]
+     ]
+    }
+   ]
+  },
+  "question": {
+   "means": "asking",
+   "head_only": true,
+   "words": "",
+   "hf": [
+    "QUESTION"
+   ],
+   "variants": [
+    {
+     "id": "turn",
+     "head": 9
+    }
+   ]
+  },
+  "emphasis": {
+   "means": "stress",
+   "head_only": true,
+   "words": "",
+   "hf": [
+    "EMPHATIC"
+   ],
+   "variants": [
+    {
+     "id": "accent",
+     "head_osc": [
+      [
+       0.0,
+       6
+      ]
+     ]
+    }
+   ]
+  }
+ }
+}

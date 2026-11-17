@@ -1,0 +1,6 @@
+.venv/
+rl/.venv/
+__pycache__/
+models/
+out/
+config/secrets.env

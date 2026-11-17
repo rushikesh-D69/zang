@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zang Twin Studio</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%2215%22 fill=%22%2304060a%22/%3E%3Crect x=%229%22 y=%229%22 width=%225%22 height=%229%22 rx=%222%22 fill=%22%235ad8ff%22/%3E%3Crect x=%2218%22 y=%229%22 width=%225%22 height=%229%22 rx=%222%22 fill=%22%235ad8ff%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/web/style.css">
+<script>
+  // theme before first paint (no flash): saved choice, else follow the system
+  try {
+    const t = localStorage.getItem("zang.theme");
+    document.documentElement.dataset.theme = t === "light" || t === "dark" ? t
+      : (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  } catch { /* storage blocked: keep default */ }
+</script>
+<script type="importmap">
+{"imports": {"three": "/web/vendor/three/three.module.js", "three/addons/": "/web/vendor/three/addons/"}}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="mark">ZANG</span><span class="sub">TWIN STUDIO</span></div>
+  <nav id="tabs" class="tabs" aria-label="Workspaces">
+    <button data-tab="compose" class="on">Compose</button>
+    <button data-tab="gestures">Gestures</button>
+    <button data-tab="display">Display</button>
+    <button data-tab="pose">Pose</button>
+    <button data-tab="policies">Policies</button>
+    <button data-tab="device">Device</button>
+  </nav>
+  <div class="chips">
+    <span id="chip-safety" class="chip"><i></i>SAFETY</span>
+    <span id="chip-physics" class="chip"><i></i>PHYSICS</span>
+    <span id="chip-robot" class="chip"><i></i>LINK</span>
+  </div>
+  <div class="theme" role="radiogroup" aria-label="Display mode">
+    <button data-theme-set="light" title="White theme">WHITE</button>
+    <button data-theme-set="dark" title="Dark theme">DARK</button>
+  </div>
+</header>
+
+<main class="layout">
+  <aside class="rail left">
+    <section data-panel="compose" class="panel on">
+      <div class="group">
+        <label class="cap" for="ask">Ask Zang</label>
+        <div class="row"><input id="ask" placeholder="Question → LLM writes the reply + tags"><button id="ask-go">Ask</button></div>
+      </div>
+      <div class="group">
+        <label class="cap" for="text">Reply script <em>&lt;wave&gt; &lt;think&gt; &lt;up&gt; …</em></label>
+        <textarea id="text" rows="6">Hi there! <wave> I am Zang, your robot friend. I think we can build something amazing together. Do you want to try?</textarea>
+      </div>
+      <div class="group">
+        <span class="cap">Mood</span>
+        <label class="slider"><span>Valence</span><input id="v" type="range" min="0" max="1" step="0.05" value="0.7"><output>0.70</output></label>
+        <label class="slider"><span>Arousal</span><input id="a" type="range" min="0" max="1" step="0.05" value="0.5"><output>0.50</output></label>
+        <label class="slider"><span>Dominance</span><input id="d" type="range" min="0" max="1" step="0.05" value="0.5"><output>0.50</output></label>
+      </div>
+      <div class="group">
+        <span class="cap">Timing &amp; checks</span>
+        <select id="voice"><option value="">Text prosody (no audio)</option></select>
+        <label class="check"><input id="physics" type="checkbox" checked> Physics twin</label>
+        <label class="check"><input id="hf" type="checkbox" checked> Gesture model (HF)</label>
+      </div>
+      <button id="compose" class="primary">Generate motion <kbd>Ctrl ↵</kbd></button>
+      <pre id="compose-log" class="log"></pre>
+    </section>
+
+    <section data-panel="gestures" class="panel">
+      <div class="group"><span class="cap">Gesture vocabulary</span>
+        <input id="gesture-filter" placeholder="Filter…"></div>
+      <div id="gesture-list" class="gestures"></div>
+    </section>
+
+    <section data-panel="display" class="panel">
+      <div class="tft-wrap"><canvas id="tft" width="240" height="240" aria-label="Chest display preview"></canvas></div>
+      <div class="seg wide" id="dmode" role="group" aria-label="Display mode">
+        <button data-mode="0" class="on">FACE</button><button data-mode="1">IMAGE</button><button data-mode="2">TEXT</button><button data-mode="3">CAMERA</button>
+      </div>
+      <p class="hint" id="dsent">Preview only: connect a robot (Device) to send.</p>
+
+      <div class="dpane" data-dpane="0">
+        <span class="cap">Emotion</span>
+        <div id="emotions" class="emotions"></div>
+        <label class="slider"><span>Intensity</span><input id="f-int" type="range" min="0" max="1" step="0.05" value="1"><output>1.00</output></label>
+        <label class="slider"><span>Blend ms</span><input id="f-blend" type="range" min="0" max="1500" step="50" value="250"><output>250</output></label>
+        <label class="slider"><span>Gaze X</span><input id="f-gx" type="range" min="-30" max="30" step="1" value="0"><output>0</output></label>
+        <label class="slider"><span>Gaze Y</span><input id="f-gy" type="range" min="-25" max="25" step="1" value="0"><output>0</output></label>
+        <label class="check"><input id="f-talk" type="checkbox"> Talking (mouth animates)</label>
+        <label class="check"><input id="f-hold" type="checkbox"> Hold (no idle blink / drift)</label>
+        <details><summary>Face designer · all parameters</summary>
+          <div id="fparams" class="sliders"></div>
+          <div class="row"><button id="f-reset">Reset</button><button id="f-copy">Copy as emotion JSON</button></div>
+        </details>
+      </div>
+      <div class="dpane" data-dpane="1" hidden>
+        <span class="cap">Image → 240×240 JPEG</span>
+        <input id="img-file" type="file" accept="image/*">
+        <div class="row"><select id="img-fit"><option value="cover">Fill circle (crop)</option><option value="contain">Fit (letterbox)</option></select></div>
+        <label class="check"><input id="img-store" type="checkbox"> Also store on the robot's SD card</label>
+        <button id="img-send">Show image</button>
+      </div>
+      <div class="dpane" data-dpane="2" hidden>
+        <span class="cap">Text</span>
+        <textarea id="txt" rows="2">HELLO</textarea>
+        <div class="row"><select id="txt-size"><option value="1">Small</option><option value="2" selected>Medium</option><option value="3">Large</option><option value="4">Huge</option></select>
+          <input id="txt-fg" type="color" value="#5ad8ff" aria-label="Text colour"><input id="txt-bg" type="color" value="#04060a" aria-label="Background colour"></div>
+        <label class="slider"><span>Seconds</span><input id="txt-dur" type="range" min="0" max="20" step="1" value="0"><output>∞</output></label>
+        <button id="txt-send">Show text</button>
+      </div>
+      <div class="dpane" data-dpane="3" hidden>
+        <span class="cap">Robot camera (OV2640 → JPEG → Wi-Fi)</span>
+        <div class="row"><select id="cam-fps"><option>5</option><option selected>10</option><option>15</option></select>
+          <button id="cam-on">Start</button><button id="cam-off">Stop</button><button id="cam-snap">Snapshot</button></div>
+        <img id="cam-img" class="cam" alt="Camera frame">
+        <p class="hint">On the robot, CAMERA mode also mirrors the camera onto the chest TFT.</p>
+      </div>
+      <label class="slider"><span>Brightness</span><input id="bright" type="range" min="0" max="100" step="5" value="80"><output>80</output></label>
+    </section>
+
+    <section data-panel="pose" class="panel">
+      <div class="group"><span class="cap">Joint control</span>
+        <label class="check"><input id="pose-safe" type="checkbox" checked> Safety projection</label>
+        <label class="check"><input id="pose-live" type="checkbox"> Stream to robot</label>
+        <div class="row"><button id="pose-home">Home</button><button id="pose-zero">Arms zero</button></div>
+        <pre id="pose-report" class="log"></pre>
+      </div>
+      <div id="sliders" class="sliders"></div>
+    </section>
+
+    <section data-panel="policies" class="panel">
+      <div class="group"><span class="cap">RL policies tried so far</span>
+        <div class="row"><select id="pol-task"><option value="">All tasks</option></select><button id="pol-refresh" title="Re-scan rl/logs">Refresh</button></div>
+        <label class="check"><input id="pol-hide-tiny" type="checkbox" checked> Hide smoke runs (&lt; 20 iterations / 20k steps)</label>
+        <p class="hint" id="pol-note">Loading…</p>
+      </div>
+      <div class="group"><span class="cap">Replay in the 3D viewer</span>
+        <label class="slider"><span>Push m/s</span><input id="rp-push" type="range" min="0" max="0.9" step="0.05" value="0.45"><output>0.45</output></label>
+        <label class="slider"><span>Seconds</span><input id="rp-sec" type="range" min="4" max="20" step="1" value="10"><output>10</output></label>
+        <div class="row"><select id="rp-cfg" title="physics used for the rollout"><option value="train">Training physics</option><option value="sim2sim">Different physics (sim2sim)</option></select>
+          <input id="rp-seed" type="number" value="1" min="0" class="narrow" title="random seed (push directions)"></div>
+        <label class="slider" title="forward speed command, used only by walking policies"><span>Walk vx</span><input id="rp-vx" type="range" min="0" max="0.4" step="0.05" value="0.1"><output>0.10</output></label>
+        <p class="hint">Open a run below and press <b>Replay</b>. The twin shows what the policy did, including falls. Runs exported from Colab: unzip into <code>rl/runs/&lt;name&gt;/</code> and press Refresh.</p>
+      </div>
+      <div id="pol-baseline" class="pol-base"></div>
+      <div id="pol-list" class="pol-list"></div>
+      <p class="hint">TensorBoard: <code>make rl-tensorboard</code> · export a run: <code>make rl-export CKPT=…</code> · re-test: <code>make rl-sim2sim RUN=…</code></p>
+    </section>
+
+    <section data-panel="device" class="panel">
+      <div class="group"><span class="cap">Robot link · ZLink/UDP</span>
+        <div class="row"><input id="host" value="127.0.0.1" aria-label="Host"><input id="port" value="4210" class="narrow" aria-label="Port"></div>
+        <button id="connect">Connect</button>
+        <p class="hint">No robot? <code>make emulator</code></p>
+      </div>
+      <div class="row three"><button id="torque">Torque</button><button id="home">Home</button><button id="hold">Hold</button></div>
+      <button id="estop" class="danger">E-STOP</button>
+      <button id="robot-play">Play current motion on robot</button>
+      <pre id="robot-state" class="log mono-table"></pre>
+    </section>
+  </aside>
+
+  <section class="stage">
+    <div id="viewport" class="viewport">
+      <div class="hud tl"><div id="readout"></div></div>
+      <div class="hud tr">
+        <div class="seg" role="group" aria-label="Camera"><button data-view="iso">ISO</button><button data-view="front">FRONT</button><button data-view="side">SIDE</button><button data-view="top">TOP</button></div>
+        <div class="seg" role="group" aria-label="Overlays"><button id="ov-balance" class="on" title="Support polygon + CoP">BALANCE</button><button id="ov-face" class="on" title="Chest display">FACE</button></div>
+      </div>
+      <div class="hud bl"><div id="caption" class="caption"></div></div>
+      <div class="hud br legend"><span class="sw sup"></span>support <span class="sw cop"></span>CoP / ZMP</div>
+    </div>
+    <div class="transport">
+      <button id="to-start" title="Start (Home)">⏮</button>
+      <button id="step-back" title="Frame back (←)">◀</button>
+      <button id="play" class="play" title="Play / pause (Space)">▶</button>
+      <button id="step-fwd" title="Frame forward (→)">▶▏</button>
+      <button id="loop" title="Loop">⟲</button>
+      <input id="scrub" type="range" min="0" max="1000" value="0" aria-label="Scrub">
+      <span id="clock" class="clock">00.00 / 00.00</span>
+      <div class="seg small" id="speed"><button data-speed="0.25">¼</button><button data-speed="0.5">½</button><button data-speed="1" class="on">1×</button></div>
+    </div>
+    <canvas id="timeline" class="timeline"></canvas>
+  </section>
+
+  <aside class="rail right">
+    <div id="verdict" class="verdict idle"><div class="big">NO MOTION</div><div class="small">generate or preview a gesture</div></div>
+    <div id="tiles" class="tiles"></div>
+    <details open><summary>Safety stage</summary><div id="safety" class="report"></div></details>
+    <details open><summary>Physics twin</summary><div id="physics-rep" class="report"></div></details>
+    <div class="group"><span class="cap">Export to SD card</span>
+      <div class="row"><input id="export-name" value="HELLO" aria-label="Action name"><button id="export">.zact</button></div>
+      <pre id="export-log" class="log"></pre>
+    </div>
+  </aside>
+</main>
+
+<footer class="statusbar">
+  <span id="sb-server">● server</span><span id="sb-model"></span><span id="sb-fps"></span><span id="sb-link">link offline</span>
+  <span class="keys">SPACE play · ←/→ frame · ⇧ 1 s · CTRL↵ generate</span>
+</footer>
+<script type="module" src="/web/app.js"></script>
+</body>
+</html>

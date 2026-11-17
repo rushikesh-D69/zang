@@ -1,0 +1,15 @@
+# ---- Zang v0.0.1 overlay on the vendored ESP-Hosted slave defaults (ESP32-C2 = ESP8684, 26 MHz crystal) ----
+# Transport: UART on the C2's UART0 pins, wired to the P4 (P4 GPIO27 TX -> C2 U0RXD GPIO19, C2 U0TXD GPIO20 -> P4 GPIO26).
+# Baud must equal zang_p4 CONFIG_ESP_HOSTED_UART_BAUDRATE.
+CONFIG_ESP_UART_HOST_INTERFACE=y
+CONFIG_ESP_UART_PORT=0
+CONFIG_ESP_UART_PIN_TX=20
+CONFIG_ESP_UART_PIN_RX=19
+CONFIG_ESP_UART_BAUDRATE=3000000
+# Reset comes from the P4 on CHIP_EN (EN_C2 = P4 GPIO29)
+CONFIG_ESP_UART_GPIO_RESET=-1
+# UART0 carries ESP-Hosted, so the C2 has no console (its ROM boot banner still prints at 115200 on reset).
+CONFIG_ESP_CONSOLE_NONE=y
+# Same IRAM relief as the vendored UART CI config
+CONFIG_RINGBUF_PLACE_FUNCTIONS_INTO_FLASH=y
+CONFIG_RINGBUF_PLACE_ISR_FUNCTIONS_INTO_FLASH=y

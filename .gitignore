@@ -1,0 +1,56 @@
+# ---- Python environments and caches (recreate with `make setup`) ----
+.venv/
+**/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# ---- secrets ----
+secrets.env
+.env
+*.pem
+*.key
+
+# ---- ai_stack: generated or downloaded ----
+# symlinks to the speech models (make models)
+ai_stack/models/
+# exports, generated audio, service logs
+ai_stack/out/
+ai_stack/data/
+# training runs, checkpoints, TensorBoard events
+ai_stack/rl/logs/
+# unzipped Colab results
+ai_stack/rl/runs/
+ai_stack/rl/dist/
+ai_stack/rl/export/*.onnx*
+
+# ---- firmware: build output and downloaded ESP-IDF components ----
+firmware/**/build/
+firmware/**/managed_components/
+firmware/**/sdkconfig
+firmware/**/sdkconfig.old
+# datasheets are re-downloadable: make -C firmware datasheets (see firmware/docs/datasheets/INDEX.md)
+firmware/docs/datasheets/*.pdf
+firmware/docs/datasheets/*.html
+firmware/docs/datasheets/not_used/
+firmware/docs/datasheets/*.part
+firmware/docs/datasheets/.fetch.log
+# the board schematic is ours: keep it
+!firmware/docs/Zang*Schmeatics.pdf
+
+# ---- CAD pipeline intermediates (rebuilt from the STEP by zang_description/tools) ----
+zang_description/build/
+# Fusion archive; the .step next to it is the exchange source
+*.f3z
+*.f3d
+
+# ---- tools, editors, OS ----
+/build/
+.claude/settings.local.json
+.vscode/
+.idea/
+.DS_Store
+*.log
+*.tmp
+*.swp

@@ -1,0 +1,27 @@
+menu "Zang motion"
+    config ZANG_MOTION_PERIOD_MS
+        int "Servo update period (ms)"
+        range 5 100
+        default 20
+        help
+            20 ms = 50 Hz. With per-servo writes at 115200 baud, 15 goals take ~14 ms, so periods below 20 ms
+            need SYNC WRITE or a faster bus.
+    config ZANG_MOTION_WATCHDOG_MS
+        int "Stream watchdog: HOLD after this long without any frame from the host (ms)"
+        default 500
+    config ZANG_MOTION_STALE_MS
+        int "Drop targets/keys more than this far in the past (ms)"
+        default 200
+    config ZANG_MOTION_READS_PER_CYCLE
+        int "Servo position reads per cycle (round robin)"
+        range 0 15
+        default 1
+    config ZANG_MOTION_FILE_LEAD_MS
+        int "Lead time before a .zact file's frame 0 (ms), to move smoothly from the current pose"
+        default 400
+    config ZANG_MOTION_ALLOW_UNCALIBRATED
+        bool "Allow torque on without a stored calibration (bench bring-up only)"
+        default n
+        help
+            With default calibration (zero = mid travel, sign +1) every joint may jump on torque-on.
+endmenu

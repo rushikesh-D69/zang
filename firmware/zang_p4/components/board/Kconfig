@@ -1,0 +1,30 @@
+menu "Zang board pins"
+    comment "Defaults = Zang board v0.0.1 schematic (docs/PINOUT.md, docs/HARDWARE_REVIEW.md). -1 = not wired."
+    rsource "Kconfig.pins"
+
+    menu "Pin polarity and bus options"
+        config ZANG_SERVO_PWR_ACTIVE_HIGH
+            bool "Servo power enable is active high"
+            default y
+        config ZANG_AMP_EN_ACTIVE_HIGH
+            bool "Amplifier enable is active high"
+            default y
+        config ZANG_LCD_BL_ACTIVE_HIGH
+            bool "Backlight is active high"
+            default n
+            help
+                v0.0.1 drives the AO3401A P-MOSFET gate: backlight is ON when the pin is LOW.
+        config ZANG_VBAT_DIVIDER_X1000
+            int "Battery divider ratio x1000 (v0.0.1: 20k/10k = 3.000)"
+            default 3000
+        config ZANG_I2C_PORT
+            int "Shared I2C controller number"
+            range 0 1
+            default 0
+        config ZANG_I2C_FREQ_HZ
+            int "Shared I2C bus frequency (Hz)"
+            default 100000
+            help
+                100 kHz: the bus carries the OV2640 SCCB (max 400 kHz) on v0.0.1.
+    endmenu
+endmenu

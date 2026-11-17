@@ -1,0 +1,11 @@
+menu "Zang network"
+    config ZANG_WIFI_SSID
+        string "Default Wi-Fi SSID (used when NVS has none)"
+        default ""
+    config ZANG_WIFI_PASSWORD
+        string "Default Wi-Fi password"
+        default ""
+    config ZANG_HOSTNAME
+        string "mDNS / DHCP hostname"
+        default "zang"
+endmenu
